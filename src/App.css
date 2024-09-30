@@ -14,6 +14,7 @@ body, html {
 .main-content {
   flex: 2;
   padding: 20px;
+  margin: auto
 }
 
 .sidebar {

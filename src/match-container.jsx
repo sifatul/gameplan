@@ -1,11 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const MatchScoreDashboard = props => {
   const { teams, setTeamScore } = props;
   const [matches, setMatches] = useState([]);
 
-  const updateScore = useCallback((_matches) => {
-
+  const updateScore = useCallback(_matches => {
     const score = {};
     _matches.forEach(match => {
       match.forEach(team => {
@@ -17,17 +16,19 @@ const MatchScoreDashboard = props => {
       });
     });
     setTeamScore(score);
-
-  })
- 
-  
+  });
 
   const handleScoreChange = (matchIndex, teamIndex, value) => {
     const matchCopy = matches[matchIndex][teamIndex];
     matchCopy.score = parseInt(value);
     setMatches(matches);
-    updateScore(matches)
+    updateScore(matches);
   };
+
+  useEffect(() => {
+    if (matches.length == 0) return;
+    setTeamScore({});
+  }, [matches.length]);
 
   function createMatch() {
     const matches = [];
@@ -45,8 +46,13 @@ const MatchScoreDashboard = props => {
 
   return (
     <>
-      <h1>Create Match</h1>
-      <button onClick={createMatch}>Create Match</button>
+      {matches.length == 0 && (
+        <>
+          <h1>Create Match</h1>
+          <button onClick={createMatch}>Create Match</button>
+        </>
+      )}
+
       {matches.length > 0 && (
         <div className="sidebar">
           <h3>Match Score</h3>
