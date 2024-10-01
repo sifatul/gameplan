@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 function TeamContainer(props) {
   const { teams, setTeams } = props;
-  const [totalParticipants, setTotalParticipants] = useState(4);
+  const [totalParticipants, setTotalParticipants] = useState(6);
   const [playersPerTeam, setPlayersPerTeam] = useState(2);
   const createTeams = e => {
     e.preventDefault();

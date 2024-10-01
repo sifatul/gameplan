@@ -69,6 +69,10 @@ input {
     flex-direction: column;
     padding: 10px;
   }
+  .main-content {
+    margin:0;
+    padding: 20px 0;
+  }
   .PlayerList {
     flex: unset;
     width: 100%;

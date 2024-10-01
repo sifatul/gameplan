@@ -79,5 +79,8 @@ button:focus-visible {
   button {
     border-color: #646cff;
   }
+  input:focus-visible {
+    border: 0;
+  }
   
 }
