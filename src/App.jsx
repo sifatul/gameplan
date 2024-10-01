@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
 import './App.css';
-import Sidebar from './sidebar';
 import ScoreBoard from './Scoreboard';
-import MatchContainer from './match-container';
-import TeamContainer from './team-container';
+
+import MatchContainer from './MatchContainer';
+import TeamContainer from './TeamContainer';
 function App() {
-  
-  
   const [teams, setTeams] = useState([]);
-  const [teamScore, setTeamScore] = useState(null);
-   
- 
+  
+  const [matches, setMatches] = useState([]);
 
   return (
     <div className="App">
-      <div className="main-content">
-
-       <TeamContainer setTeams={setTeams} teams={teams}></TeamContainer>
-       {teams.length>0 &&  <MatchContainer teams={teams} setTeamScore={setTeamScore}></MatchContainer>}
-
-      </div>
-
-      {teams.length > 0 && !teamScore && <Sidebar teams={teams} ></Sidebar>}
-      {teamScore && <ScoreBoard teamScore={teamScore}></ScoreBoard>}
+      {teams.length == 0 && <TeamContainer setTeams={setTeams} teams={teams}></TeamContainer>}
+      {teams.length > 0 && matches.length == 0 &&  (
+        <MatchContainer
+          teams={teams}
+           
+          matches={matches}
+          setMatches={setMatches}
+           
+        ></MatchContainer>
+      )}
+      {matches.length > 0 && <ScoreBoard matches={matches}></ScoreBoard>}
+      
     </div>
   );
 }

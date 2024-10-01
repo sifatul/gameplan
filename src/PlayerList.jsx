@@ -1,8 +1,8 @@
-function Sidebar(props) {
+function PlayerList(props) {
   const { teams } = props;
   return (
     <>
-      <div className="sidebar">
+      <div className="PlayerList">
         <h3>Teams and Players</h3>
         <ul>
           {teams.map((team, index) => (
@@ -22,4 +22,4 @@ function Sidebar(props) {
     </>
   );
 }
-export default Sidebar;
+export default PlayerList;

@@ -9,15 +9,16 @@ body, html {
 
 .App {
   display: flex;
+  padding: 20px;
 }
 
 .main-content {
-  flex: 2;
   padding: 20px;
-  margin: auto
+  flex: 2;
+  /* margin: auto */
 }
 
-.sidebar {
+.PlayerList {
   flex: 1;
   background-color: #f7f7f7;
   padding: 20px;
@@ -34,11 +35,7 @@ input {
   max-width: 300px;
 }
 
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  cursor: pointer;
-}
+
 
 .team h3 {
   color: #007bff;
@@ -55,4 +52,42 @@ button {
 .match .scores input {
   width: 50px;
   text-align: center;
+}
+.titleHolder{
+  padding: 10px 0;
+}
+.titleHolder h1{
+  margin-bottom: 0;
+}
+.titleHolder p{
+  margin-top: 0;
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+  .App {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .PlayerList {
+    flex: unset;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-left: none;
+    margin-top: 20px;
+    box-sizing: border-box;
+  }
+  input {
+    width: 100%; /* Make inputs take full width of their container */
+    box-sizing: border-box; /* Ensure padding and borders are included in the input width */
+    padding: 10px;
+    margin: 5px 0; 
+  }
+  form {
+    width: 100%;
+    max-width: 100%; /* Ensure the form doesn't exceed the width of the container */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+  }
+
 }

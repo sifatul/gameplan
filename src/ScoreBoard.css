@@ -1,4 +1,4 @@
-.sidebar {
+.PlayerList {
     background-color: #f9f9f9;
     padding: 20px;
     border: 1px solid #ddd;
@@ -28,10 +28,27 @@
   }
   
   .score {
-    color: #2c3e50;
+    color: #ddd;
   }
   
   .games {
-    color: #7f8c8d;
+    color: #ddd;
   }
   
+  /* Add responsiveness */
+@media (max-width: 768px) {
+  .PlayerList {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  h3 {
+    font-size: 1.2em;
+  }
+  .team-score {
+    font-size: 0.9em;
+  }
+  .score,
+  .games {
+    font-size: 0.8em;
+  }
+}
