@@ -63,6 +63,7 @@ input {
   margin-top: 0;
 }
 
+
 /* Add responsiveness */
 @media (max-width: 768px) {
   .App {

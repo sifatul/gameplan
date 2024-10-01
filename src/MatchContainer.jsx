@@ -6,13 +6,16 @@ const MatchScoreDashboard = props => {
   const { teams, matches, setMatches, teamScore } = props;
   function createMatch() {
     const matches = [];
-
+    let counter = 0;
     for (let i = 0; i < teams.length; i++) {
       for (let j = i + 1; j < teams.length; j++) {
-        matches.push([
-          { ...teams[i], score: 0 },
-          { ...teams[j], score: 0 },
-        ]);
+        matches.push({
+          matchId: ++counter,
+          teams: [
+            { ...teams[i], score: 0 },
+            { ...teams[j], score: 0 },
+          ]
+        });
       }
     }
     setMatches(matches);

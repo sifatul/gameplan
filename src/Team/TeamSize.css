@@ -1,0 +1,84 @@
+.team-setup {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.team-size-selection {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allows the cards to wrap on smaller screens */
+  margin: 20px 0;
+}
+
+.team-card {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  width: 30%;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.team-card:first-child {
+  margin-left: 0;
+}
+
+.team-card:hover {
+  background-color: #f9f9f9;
+}
+
+.team-card.selected {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.team-card h3 {
+  margin: 0;
+}
+
+.team-card p {
+  font-size: 0.9em;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Ensure full width on small screens */
+}
+
+button:hover {
+  background-color: #333;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 600px) {
+  .team-size-selection {
+    flex-direction: column;
+    align-items: center; /* Center the cards on mobile */
+    margin-top: 0;
+  }
+  .team-setup{
+    padding: 0;
+  }
+
+  .team-card {
+    width: 100%; /* Make the cards take up most of the screen width */
+    margin: 10px 0;
+    padding: 10px 5px;
+    margin: 10px 0 0 0;
+  }
+
+  button {
+    width: 100%; /* Make the button full width on mobile */
+    padding: 15px; /* Increase padding for better tap targets */
+  }
+}

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import TeamSize from './TeamSize';
+
 function TeamContainer(props) {
   const { teams, setTeams } = props;
   const [totalParticipants, setTotalParticipants] = useState(6);
@@ -26,7 +28,7 @@ function TeamContainer(props) {
     }
     setTeams(newTeams);
   };
-
+console.log(playersPerTeam)
   return (
     <div className="main-content">
       {teams.length == 0 && (
@@ -35,6 +37,7 @@ function TeamContainer(props) {
             <h1>Team Setup</h1>
             <p>Easily organize your participants into teams.</p>
           </div>
+          {teams.length == 0 && <TeamSize setPlayersPerTeam={setPlayersPerTeam} playersPerTeam={playersPerTeam}></TeamSize>}
           <form onSubmit={createTeams}>
             <div>
               <label htmlFor="total-participants">Total Number of Players:              </label>
@@ -48,7 +51,7 @@ function TeamContainer(props) {
             </div>
             <br />
 
-            <div>
+            {playersPerTeam >2 && <div>
               <label htmlFor="players-per-team">Players per Team (Max):</label>
               <input
                 type="number"
@@ -57,7 +60,7 @@ function TeamContainer(props) {
                 onChange={e => setPlayersPerTeam(e.target.value)}
                 required
               />
-            </div>
+            </div>}
             <br />
 
             <button type="submit">Create Teams</button>

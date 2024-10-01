@@ -55,6 +55,17 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+
+/* Secondary Button */
+button.secondary {
+  background-color: #4d4d4d; /* Lighter gray for secondary button */
+  color: #fff;
+}
+
+button.secondary:hover {
+  background-color: #666; /* Hover color for secondary button */
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -63,9 +74,7 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #f9f9f9;
-  }
+ 
 }
 
 /* Add responsiveness */
