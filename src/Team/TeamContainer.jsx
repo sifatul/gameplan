@@ -28,8 +28,9 @@ function TeamContainer(props) {
     }
     setTeams(newTeams);
   };
-console.log(playersPerTeam)
+  console.log(playersPerTeam);
   return (
+    <>
     <div className="main-content">
       {teams.length == 0 && (
         <>
@@ -37,21 +38,20 @@ console.log(playersPerTeam)
             <h1>Team Setup</h1>
             <p>Easily organize your participants into teams.</p>
           </div>
-          {teams.length == 0 && <TeamSize setPlayersPerTeam={setPlayersPerTeam} playersPerTeam={playersPerTeam}></TeamSize>}
-          <form onSubmit={createTeams}>
-            <div>
-              <label htmlFor="total-participants">Total Number of Players:              </label>
-              <input
-                type="number"
-                id="total-participants"
-                value={totalParticipants}
-                onChange={e => setTotalParticipants(e.target.value)}
-                required
-              />
-            </div>
-            <br />
 
-            {playersPerTeam >2 && <div>
+          <div>
+            <label htmlFor="total-participants">Total Number of Players: </label>
+            <input
+              type="number"
+              id="total-participants"
+              value={totalParticipants}
+              onChange={e => setTotalParticipants(e.target.value)}
+              required
+            />
+          </div>
+
+          {playersPerTeam > 2 && (
+            <div>
               <label htmlFor="players-per-team">Players per Team (Max):</label>
               <input
                 type="number"
@@ -60,14 +60,20 @@ console.log(playersPerTeam)
                 onChange={e => setPlayersPerTeam(e.target.value)}
                 required
               />
-            </div>}
-            <br />
+            </div>
+          )}
 
-            <button type="submit">Create Teams</button>
-          </form>
+          {teams.length == 0 && <TeamSize setPlayersPerTeam={setPlayersPerTeam} playersPerTeam={playersPerTeam}></TeamSize>}
+
         </>
       )}
+      
     </div>
+
+    <button className='action-btn' type="submit" onClick={() => createTeams()}>
+            Create Teams
+          </button>
+    </>
   );
 }
 export default TeamContainer;

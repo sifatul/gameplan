@@ -1,12 +1,12 @@
 .team-setup {
   padding: 20px;
   max-width: 800px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .team-size-selection {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap; /* Allows the cards to wrap on smaller screens */
   margin: 20px 0;
 }
@@ -47,21 +47,30 @@
 
 
 /* Media query for mobile screens */
-@media (max-width: 600px) {
+@media (max-width: 350px) {
   .team-size-selection {
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center; /* Center the cards on mobile */
     margin-top: 0;
+    gap: 15px;
   }
   .team-setup{
     padding: 0;
   }
 
+
   .team-card {
-    width: 100%; /* Make the cards take up most of the screen width */
-    margin: 10px 0;
     padding: 10px 5px;
     margin: 10px 0 0 0;
+    height: 100px;
+    width: 120px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+  }
+  .team-card p{
+    margin: 0;
   }
 
   button {

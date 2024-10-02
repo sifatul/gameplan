@@ -23,7 +23,7 @@ const MatchScoreDashboard = props => {
 
   return (
     <>
-      <div className="main-content">
+      <>
         {teams.length > 0 && !teamScore && (
           <>
             <div className="titleHolder">
@@ -33,7 +33,7 @@ const MatchScoreDashboard = props => {
             <button onClick={createMatch}>Create Match</button>
           </>
         )}
-      </div>
+      </>
 
       <>{teams.length > 0 && <PlayerList teams={teams}></PlayerList>}</>
     </>

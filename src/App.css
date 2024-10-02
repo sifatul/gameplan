@@ -10,12 +10,18 @@ body, html {
 .App {
   display: flex;
   padding: 20px;
+  height: calc(100vh - 20px);
+  justify-content: space-between;
+}
+.main-content{
+  position: relative;
+  display: block;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
-.main-content {
-  padding: 20px;
-  flex: 2;
-  /* margin: auto */
+.action-btn{
+  height: 50px;
 }
 
 .PlayerList {
@@ -55,6 +61,7 @@ input {
 }
 .titleHolder{
   padding: 10px 0;
+  min-height: 120px;
 }
 .titleHolder h1{
   margin-bottom: 0;
@@ -65,15 +72,12 @@ input {
 
 
 /* Add responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 350px) {
   .App {
     flex-direction: column;
-    padding: 10px;
+    padding: 15px;
   }
-  .main-content {
-    margin:0;
-    padding: 20px 0;
-  }
+ 
   .PlayerList {
     flex: unset;
     width: 100%;
@@ -94,5 +98,7 @@ input {
     max-width: 100%; /* Ensure the form doesn't exceed the width of the container */
     box-sizing: border-box; /* Include padding and border in the element's total width */
   }
-
+  .titleHolder, .titleHolder h1{
+    padding-top: 0;;
+  }
 }
