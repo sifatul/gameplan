@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
-import MatchContainer from './MatchContainer';
+import MatchContainer from './MatchContainer/MatchContainer';
 import TeamContainer from './Team/TeamContainer';
 import PlayerListPage from './Team/PlayerListPage';
 

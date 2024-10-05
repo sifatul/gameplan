@@ -1,9 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
- 
+import { IoMdPeople } from 'react-icons/io';
+import './MatchContainer.css';
+import MatchListPage from './MatchList';
+import PlayerListPage from '../Team/PlayerListPage';
+import ActivePlayerListPage from './activePlayerList';
 
 const MatchContainer = props => {
-  const {playerList = [], resetGame} = props;
+  const { playerList = [], resetGame } = props;
   const [rounds, setRounds] = useState([]);
+  const [activeTabIdx, setActiveTabIdx] = useState(0);
 
   function generateRounds(players) {
     const rounds = [];
@@ -12,7 +17,7 @@ const MatchContainer = props => {
     // Check if the number of players is even; if not, add a "bye" player
     const isOdd = numberOfPlayers % 2 !== 0;
     if (isOdd) {
-      players.push({name: 'Bye'})
+      players.push({ name: 'Bye' });
     }
 
     // Total rounds are equal to number of players - 1
@@ -38,58 +43,53 @@ const MatchContainer = props => {
 
     return rounds;
   }
-   useEffect(() => {
-    if(!playerList.length){
+  useEffect(() => {
+    if (!playerList.length) {
       const storedFixture = JSON.parse(localStorage.getItem('matches'));
-      console.log("storedFixture", storedFixture)
+      console.log('storedFixture', storedFixture);
       setRounds(storedFixture);
-      return
+      return;
     }
     const rounds = generateRounds(playerList);
+    console.log('rounds', rounds);
     setRounds(rounds);
   }, [playerList, setRounds]);
 
-  const saveMatchInfo = ()=>{
-// Convert array to JSON string and save it to localStorage
-      localStorage.setItem('matches', JSON.stringify(rounds));
-
-  }
- 
+  const saveMatchInfo = () => {
+    // Convert array to JSON string and save it to localStorage
+    localStorage.setItem('matches', JSON.stringify(rounds));
+  };
 
   return (
     <>
       <div className="main-content matchContainer">
-      <div className="titleHolder">
+        <div className="titleHolder">
           <h1>Match List</h1>
           <p>Games that you will play.</p>
         </div>
-        <ul>
-          {rounds.map((round, index) => {
-            return (
-              <div key={`round-${index}`}>
-                {round.map((pair, idx) => {
-                  return (
-                    <div key={`index-${pair[0]}`}>
-                      <span> {pair[0]}</span>
-                      <span>{pair[1]}</span>
-                       
-                    </div>
-                  );
-                })}
-                <hr></hr>
-              </div>
-            );
-          })}
-        </ul>
+        <div className="custom-tabs">
+          <div className={`custom-tabs-item ${activeTabIdx === 0 ? 'active' : ''}`} onClick={() => setActiveTabIdx(0)}>
+            Match
+          </div>
+          <div 
+        className={`custom-tabs-item ${activeTabIdx === 1 ? 'active' : ''}`} 
+        onClick={() => setActiveTabIdx(1)}
+      >
+        Players
+      </div>
+        </div>
+
+        {activeTabIdx === 0 &&  <MatchListPage rounds={rounds} />}
+        {activeTabIdx === 1 &&  <ActivePlayerListPage playerList={playerList}/>}
       </div>
       {playerList.length > 0 && (
-        <button className="action-btn" type="submit" onClick={e=>saveMatchInfo()}>
+        <button className="action-btn" type="submit" onClick={e => saveMatchInfo()}>
           Save
         </button>
       )}
-        <button className="action-btn" type="submit" onClick={e=>resetGame()}>
-          reset
-        </button>
+      <button className="action-btn" type="submit" onClick={e => resetGame()}>
+        reset
+      </button>
     </>
   );
 };

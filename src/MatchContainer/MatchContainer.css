@@ -1,0 +1,33 @@
+.custom-tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+}
+.custom-tabs-item {
+    flex: 1; /* This makes the children take up equal space */
+     
+    border: 1px solid #ccc;
+    text-align: center;
+
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    background-color: #f0f0f0;
+}
+.custom-tabs-item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .custom-tabs-item.active {
+    background-color: white;
+    border-bottom: 2px solid white; /* Make it look connected to the content */
+    font-weight: bold;
+    color: #333;
+  }
+
+ .match-team{
+    align-items: center;
+    margin: 10px 0;
+    justify-content: flex-start;
+    display: flex;
+ }

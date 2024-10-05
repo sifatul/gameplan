@@ -7,7 +7,6 @@ function PlayerListPage(props) {
  
   useEffect(()=>{
 
-
     const cachedPlayers = JSON.parse(localStorage.getItem('playerList'));
     if (cachedPlayers && cachedPlayers.length === totalParticipants) {
       setPlayerList(cachedPlayers);

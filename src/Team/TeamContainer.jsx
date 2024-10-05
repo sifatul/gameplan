@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import TeamSize from './TeamSize';
 import { PAGE_ROUTE } from '../App';
 
 function TeamContainer(props) {
