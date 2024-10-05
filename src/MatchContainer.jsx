@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import ScoreBoard from './Scoreboard';
-import PlayerList from './PlayerList';
  
 
-const MatchScoreDashboard = props => {
+const MatchContainer = props => {
   const {playerList = [], resetGame} = props;
   const [rounds, setRounds] = useState([]);
 
@@ -14,7 +12,7 @@ const MatchScoreDashboard = props => {
     // Check if the number of players is even; if not, add a "bye" player
     const isOdd = numberOfPlayers % 2 !== 0;
     if (isOdd) {
-      return;
+      players.push({name: 'Bye'})
     }
 
     // Total rounds are equal to number of players - 1
@@ -28,7 +26,7 @@ const MatchScoreDashboard = props => {
       for (let i = 0; i < half; i++) {
         const player1 = players[i];
         const player2 = players[numberOfPlayers - 1 - i];
-        if (player1 !== 'Bye' && player2 !== 'Bye') {
+        if (player1.name !== 'Bye' && player2.name !== 'Bye') {
           currentRound.push([player1.name, player2.name]);
         }
       }
@@ -61,19 +59,24 @@ const MatchScoreDashboard = props => {
   return (
     <>
       <div className="main-content matchContainer">
+      <div className="titleHolder">
+          <h1>Match List</h1>
+          <p>Games that you will play.</p>
+        </div>
         <ul>
           {rounds.map((round, index) => {
             return (
               <div key={`round-${index}`}>
-                <p>Round {index + 1}:</p>
-
                 {round.map((pair, idx) => {
                   return (
                     <div key={`index-${pair[0]}`}>
-                      {pair[0]} & {pair[1]}
+                      <span> {pair[0]}</span>
+                      <span>{pair[1]}</span>
+                       
                     </div>
                   );
                 })}
+                <hr></hr>
               </div>
             );
           })}
@@ -91,4 +94,4 @@ const MatchScoreDashboard = props => {
   );
 };
 
-export default MatchScoreDashboard;
+export default MatchContainer;

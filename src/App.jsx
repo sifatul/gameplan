@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
-import ScoreBoard from './Scoreboard';
 import MatchContainer from './MatchContainer';
 import TeamContainer from './Team/TeamContainer';
 import PlayerListPage from './Team/PlayerListPage';
@@ -13,13 +12,8 @@ export const PAGE_ROUTE = {
 
 function App() {
   const [playerList, setPlayerList] = useState([]);
-
-  
-
   const [pageName, setPageName] = useState(PAGE_ROUTE.LANDING_PAGE);
   const [totalParticipants, setTotalParticipants] = useState(6);
-
-  console.log('pageName', pageName);
 
   const resetGame = useCallback(() => {
     localStorage.removeItem('matches');
@@ -54,7 +48,6 @@ function App() {
         ></PlayerListPage>
       )}
       {pageName === PAGE_ROUTE.MATCHES && <MatchContainer playerList={playerList} resetGame={resetGame}></MatchContainer>}
-      {/* {matches.length > 0 && <ScoreBoard matches={matches}></ScoreBoard>} */}
     </div>
   );
 }
