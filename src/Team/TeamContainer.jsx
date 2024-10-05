@@ -1,38 +1,19 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import TeamSize from './TeamSize';
+import { PAGE_ROUTE } from '../App';
 
 function TeamContainer(props) {
-  const { teams, setTeams } = props;
-  const [totalParticipants, setTotalParticipants] = useState(6);
-  const [playersPerTeam, setPlayersPerTeam] = useState(2);
-  const createTeams = e => {
-    e.preventDefault();
-    const participants = [];
-    for (let i = 1; i <= totalParticipants; i++) {
-      participants.push(`Participant ${i}`);
-    }
+  const { setTotalParticipants, setPageName, totalParticipants } = props;
 
-    // Shuffle participants
-    participants.sort(() => Math.random() - 0.5);
+  // const [playersPerTeam, setPlayersPerTeam] = useState(2);
 
-    // Set team names
-    const numTeams = Math.ceil(totalParticipants / playersPerTeam);
+  const goToNextPage = useCallback(() => {
+    setPageName(PAGE_ROUTE.PLAYER_LIST);
+  }, []);
 
-    // Create teams
-    const newTeams = [];
-    for (let i = 0; i < numTeams; i++) {
-      newTeams.push({
-        name: `Team ${i + 1}`,
-        players: participants.splice(0, playersPerTeam),
-      });
-    }
-    setTeams(newTeams);
-  };
-  console.log(playersPerTeam);
   return (
     <>
-    <div className="main-content">
-      {teams.length == 0 && (
+      <div className="main-content teamContainer">
         <>
           <div className="titleHolder">
             <h1>Team Setup</h1>
@@ -50,29 +31,26 @@ function TeamContainer(props) {
             />
           </div>
 
-          {playersPerTeam > 2 && (
-            <div>
-              <label htmlFor="players-per-team">Players per Team (Max):</label>
-              <input
-                type="number"
-                id="players-per-team"
-                value={playersPerTeam}
-                onChange={e => setPlayersPerTeam(e.target.value)}
-                required
-              />
-            </div>
-          )}
+          {/* {playersPerTeam > 2 && (
+              <div>
+                <label htmlFor="players-per-team">Players per Team (Max):</label>
+                <input
+                  type="number"
+                  id="players-per-team"
+                  value={playersPerTeam}
+                  onChange={e => setPlayersPerTeam(e.target.value)}
+                  required
+                />
+              </div>
+            )} */}
 
-          {teams.length == 0 && <TeamSize setPlayersPerTeam={setPlayersPerTeam} playersPerTeam={playersPerTeam}></TeamSize>}
-
+          {/* {teams.length == 0 && <TeamSize setPlayersPerTeam={setPlayersPerTeam} playersPerTeam={playersPerTeam}></TeamSize>} */}
         </>
-      )}
-      
-    </div>
+      </div>
 
-    <button className='action-btn' type="submit" onClick={() => createTeams()}>
-            Create Teams
-          </button>
+      <button className="action-btn" type="submit" onClick={e => goToNextPage(e)}>
+        Create Teams
+      </button>
     </>
   );
 }

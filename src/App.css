@@ -9,15 +9,18 @@ body, html {
 
 .App {
   display: flex;
-  padding: 20px;
-  height: calc(100vh - 20px);
+  flex-direction: column;
+  /* padding: 20px; */
+  /* height: calc(100vh - 20px); */
   justify-content: space-between;
 }
 .main-content{
   position: relative;
   display: block;
-  height: 100vh;
+  height: calc(100vh - 50px);
+  width: 100vw;
   box-sizing: border-box;
+  padding: 15px;
 }
 
 .action-btn{
@@ -73,10 +76,10 @@ input {
 
 /* Add responsiveness */
 @media (max-width: 350px) {
-  .App {
+  /* .App {
     flex-direction: column;
     padding: 15px;
-  }
+  } */
  
   .PlayerList {
     flex: unset;
