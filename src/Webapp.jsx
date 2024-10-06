@@ -1,49 +1,75 @@
 import React, { useCallback, useEffect, useState } from 'react';
-function WebApp(){
+
+function WebApp() {
     const [installPromptVisible, setInstallPromptVisible] = useState(false);
     const [deferredPrompt, setDeferredPrompt] = useState(null);
 
     useEffect(() => {
         const handleBeforeInstallPrompt = e => {
-          e.preventDefault(); // Prevent the default install prompt
-          setDeferredPrompt(e); // Store the event for later
-          setInstallPromptVisible(true); // Show your custom install button
+            e.preventDefault(); // Prevent the default install prompt
+            setDeferredPrompt(e); // Store the event for later
+            setInstallPromptVisible(true); // Show your custom install button
         };
-    
-        window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    
-        return () => {
-          window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-        };
-      }, []);
 
-      const handleInstallClick = () => {
+        window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+        return () => {
+            window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+        };
+    }, []);
+
+    const handleInstallClick = () => {
         if (deferredPrompt) {
-          setInstallPromptVisible(false); // Hide the prompt
-          deferredPrompt.prompt(); // Show the install prompt
-          deferredPrompt.userChoice.then(choiceResult => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('User accepted the install prompt');
-            } else {
-              console.log('User dismissed the install prompt');
-            }
-            setDeferredPrompt(null); // Clear the prompt
-          });
+            setInstallPromptVisible(false); // Hide the prompt
+            deferredPrompt.prompt(); // Show the install prompt
+            deferredPrompt.userChoice.then(choiceResult => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                setDeferredPrompt(null); // Clear the prompt
+            });
         }
-      };
-    return <>
-      {installPromptVisible && (
-        <div
-          id="installBanner"
-          style={{ position: 'fixed', bottom: 0, width: '100%', background: '#333', color: 'white', textAlign: 'center', padding: '10px' }}
-          role="alert"
-        >
-          <p>Install our app for a better experience!</p>
-          <button onClick={handleInstallClick} aria-label="Install Game Plan App">
-            Install
-          </button>
-        </div>
-      )}
-    </>
+    };
+
+    return (
+        <>
+            {installPromptVisible && (
+                <div
+                    id="installBanner"
+                    style={{
+                        position: 'fixed',
+                        bottom: 0,
+                        width: '100%',
+                        background: '#333',
+                        color: 'white',
+                        textAlign: 'center',
+                        padding: '10px',
+                        zIndex: 1000, // Ensure the install banner stays on top
+                    }}
+                    role="alert"
+                >
+                    <p>Install our app for a better experience!</p>
+                    <button
+                        id="installButton"
+                        onClick={handleInstallClick}
+                        aria-label="Install Game Plan App"
+                        style={{
+                            padding: '10px 20px',
+                            background: '#fff',
+                            color: '#333',
+                            border: 'none',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                        }}
+                    >
+                        Install
+                    </button>
+                </div>
+            )}
+        </>
+    );
 }
-export default WebApp
+
+export default WebApp;

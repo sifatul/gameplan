@@ -4,12 +4,27 @@
   "icons": [
     {
       "src": "vite.webp",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/webp" 
+      "sizes": "100x100",
+      "type": "image/webp"
+    },
+    {
+      "src": "vite.jpg",
+      "sizes": "64x64",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "image.png",
+      "sizes": "3024x1894",
+      "type": "image/png",
+      "form_factor": "wide"
     }
   ],
   "start_url": ".",
   "display": "standalone",
+  "display_override": ["fullscreen", "minimal-ui"],
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
