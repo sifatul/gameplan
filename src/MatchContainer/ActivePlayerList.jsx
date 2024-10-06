@@ -1,18 +1,29 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { IoIosWarning, IoMdPeople } from 'react-icons/io';
 import { usePlayers } from '../context/PlayersContext';
+import { useMatch } from '../context/MatchContext';
+import { generateRounds } from '../utils/gameUtil';
 
 function ActivePlayerListPage() {
-  const { players, changePlayerStatus } = usePlayers();
+  const { players, setPlayerStatus, getActivePlayers } = usePlayers();
+  const { matches, setMatchList, changeMatchStatus, getActiveMatches } = useMatch();
 
   // Use callback to update player's active state
-  const setInActivePlayer = useCallback(
-    idx => {
-      // Update the state with the new list
-      changePlayerStatus(idx, false);
-    },
-    [players],
-  );
+  const setInActivePlayer = useCallback(idx => setPlayerStatus(idx, false), []);
+
+  useEffect(() => {
+    const activePlayers = getActivePlayers();
+    const newRound = generateRounds(activePlayers)
+
+    const activePlayersName = getActivePlayers().map(player => player.name);
+    const completedMatches = matches.filter(match => !match.isActive);
+    
+    // console.log("newRound", activePlayers);
+    console.log("newRound", activePlayers, newRound);
+
+    // if (getActiveMatches.length === updateMatch.length) return;
+    // setMatchList(updateMatch);
+  }, []);
 
   return (
     <>

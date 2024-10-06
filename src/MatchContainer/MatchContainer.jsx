@@ -1,70 +1,49 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { IoMdPeople } from 'react-icons/io';
+import { useMatch } from '../context/MatchContext';
+import { usePlayers } from '../context/PlayersContext';
 import './MatchContainer.css';
 import MatchListPage from './MatchList';
 import ActivePlayerListPage from './activePlayerList';
-import { usePlayers } from '../context/PlayersContext';
+import { generateRounds } from '../utils/gameUtil';
 
 const MatchContainer = props => {
   const { resetGame } = props;
   const { players, addPlayer, removePlayer, changePlayerName, setPlayerList } = usePlayers();
   const [rounds, setRounds] = useState([]);
   const [activeTabIdx, setActiveTabIdx] = useState(0);
+  const { matches, setMatchList, changeMatchStatus } = useMatch();
 
-  function generateRounds(players) {
-    const rounds = [];
-    const numberOfPlayers = players.length;
-
-    // Check if the number of players is even; if not, add a "bye" player
-    const isOdd = numberOfPlayers % 2 !== 0;
-    if (isOdd) {
-      players.push({ name: 'Bye' });
-    }
-
-    // Total rounds are equal to number of players - 1
-    const totalRounds = players.length - 1;
-    const half = players.length / 2;
-
-    for (let round = 0; round < totalRounds; round++) {
-      const currentRound = [];
-
-      // First half is fixed; second half is rotated
-      for (let i = 0; i < half; i++) {
-        const player1 = players[i];
-        const player2 = players[numberOfPlayers - 1 - i];
-        if (player1.name !== 'Bye' && player2.name !== 'Bye') {
-          currentRound.push({team: [player1.name, player2.name], isActive: true});
-        }
-      }
-      rounds.push(currentRound);
-
-      // Rotate players (except the first one)
-      players.splice(1, 0, players.pop());
-    }
-
-    return rounds;
-  }
+ 
   useEffect(() => {
     if (!players.length) {
       const storedFixture = JSON.parse(localStorage.getItem('matches'));
       console.log('storedFixture', storedFixture);
-      setRounds(storedFixture);
+      setMatchList(storedFixture);
       return;
     }
     const rounds = generateRounds(players);
-    console.log('rounds', rounds);
-    setRounds(rounds);
-  }, [players, setRounds]);
+    console.log('rounds', players, rounds);
+    setMatchList(rounds);
+  }, [players.length]);
 
-  const resetGameHandler = useCallback(()=>{
-    setPlayerList([])
-    resetGame()
-  },[])
+  const resetGameHandler = useCallback(() => {
+    setPlayerList([]);
+    resetGame();
+  }, []);
 
   const saveMatchInfo = () => {
     // Convert array to JSON string and save it to localStorage
     localStorage.setItem('matches', JSON.stringify(rounds));
   };
+  const rePlan = useCallback(() => {
+    const activePlayersName = players.filter(player => player.isActive);
+    const activeRounds = rounds.filter(r => r.isActive);
+
+    const newRounds = generateRounds(activePlayersName);
+    const updatedRounds = [...activeRounds, ...newRounds];
+
+    console.log('activeTeams', updatedRounds);
+  }, [rounds]);
 
   return (
     <>
@@ -77,25 +56,30 @@ const MatchContainer = props => {
           <div className={`custom-tabs-item ${activeTabIdx === 0 ? 'active' : ''}`} onClick={() => setActiveTabIdx(0)}>
             Match
           </div>
-          <div 
-        className={`custom-tabs-item ${activeTabIdx === 1 ? 'active' : ''}`} 
-        onClick={() => setActiveTabIdx(1)}
-      >
-        Players
-      </div>
+          <div className={`custom-tabs-item ${activeTabIdx === 1 ? 'active' : ''}`} onClick={() => setActiveTabIdx(1)}>
+            Players
+          </div>
         </div>
 
-        {activeTabIdx === 0 &&  <MatchListPage rounds={rounds} setRounds={setRounds}/>}
-        {activeTabIdx === 1 &&  <ActivePlayerListPage />}
+        
+        {activeTabIdx === 0 && <MatchListPage rounds={rounds} setRounds={setRounds} />}
+        {activeTabIdx === 1 && <ActivePlayerListPage />}
+        
       </div>
-      {players.length > 0 && (
-        <button className="action-btn" type="submit" onClick={e => saveMatchInfo()}>
-          Save
-        </button>
+      {players.length > 0 && activeTabIdx === 0 && (
+        <>
+          <button className="action-btn" type="submit" onClick={e => rePlan()}>
+            exclude sick players
+          </button>
+          <button className="action-btn" type="submit" onClick={e => saveMatchInfo()}>
+            Save
+          </button>
+
+          <button className="action-btn" type="submit" onClick={e => resetGameHandler()}>
+            reset
+          </button>
+        </>
       )}
-      <button className="action-btn" type="submit" onClick={e => resetGameHandler()}>
-        reset
-      </button>
     </>
   );
 };
