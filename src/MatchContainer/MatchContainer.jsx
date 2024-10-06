@@ -26,11 +26,6 @@ const MatchContainer = props => {
     setMatchList(rounds);
   }, [players.length]);
 
-  const resetGameHandler = useCallback(() => {
-    setPlayerList([]);
-    resetGame();
-  }, []);
-
   const saveMatchInfo = () => {
     // Convert array to JSON string and save it to localStorage
     localStorage.setItem('matches', JSON.stringify(rounds));
@@ -61,10 +56,6 @@ const MatchContainer = props => {
         <>
           <button className="action-btn" type="submit" onClick={e => saveMatchInfo()}>
             Save
-          </button>
-
-          <button className="action-btn" type="submit" onClick={e => resetGameHandler()}>
-            reset
           </button>
         </>
       )}
