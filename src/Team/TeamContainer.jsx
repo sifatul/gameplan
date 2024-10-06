@@ -3,9 +3,6 @@ import { PAGE_ROUTE } from '../App';
 
 function TeamContainer(props) {
   const { setTotalParticipants, setPageName, totalParticipants } = props;
-
-  // const [playersPerTeam, setPlayersPerTeam] = useState(2);
-
   const goToNextPage = useCallback(() => {
     setPageName(PAGE_ROUTE.PLAYER_LIST);
   }, []);

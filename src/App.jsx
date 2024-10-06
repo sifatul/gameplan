@@ -3,6 +3,7 @@ import './App.css';
 import MatchContainer from './MatchContainer/MatchContainer';
 import TeamContainer from './Team/TeamContainer';
 import PlayerListPage from './Team/PlayerListPage';
+import { PlayerProvider } from './context/PlayersContext'; // Import the TodoProvider
 
 export const PAGE_ROUTE = {
   LANDING_PAGE: 'LANDING_PAGE',
@@ -11,7 +12,7 @@ export const PAGE_ROUTE = {
 };
 
 function App() {
-  const [playerList, setPlayerList] = useState([]);
+   
   const [pageName, setPageName] = useState(PAGE_ROUTE.LANDING_PAGE);
   const [totalParticipants, setTotalParticipants] = useState(6);
 
@@ -39,15 +40,18 @@ function App() {
           setPageName={setPageName}
         ></TeamContainer>
       )}
-      {pageName === PAGE_ROUTE.PLAYER_LIST && (
-        <PlayerListPage
-          playerList={playerList}
-          setPageName={setPageName}
-          setPlayerList={setPlayerList}
-          totalParticipants={totalParticipants}
-        ></PlayerListPage>
-      )}
-      {pageName === PAGE_ROUTE.MATCHES && <MatchContainer playerList={playerList} resetGame={resetGame} setPlayerList={setPlayerList}></MatchContainer>}
+      <PlayerProvider>
+        {pageName === PAGE_ROUTE.PLAYER_LIST && (
+          <PlayerListPage
+
+            setPageName={setPageName}
+            totalParticipants={totalParticipants}
+          ></PlayerListPage>
+        )}
+        {pageName === PAGE_ROUTE.MATCHES && (
+          <MatchContainer  resetGame={resetGame} ></MatchContainer>
+        )}
+      </PlayerProvider>
     </div>
   );
 }

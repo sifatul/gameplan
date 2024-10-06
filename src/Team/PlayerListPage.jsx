@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { PAGE_ROUTE } from '../App';
+import { usePlayers } from '../context/PlayersContext';
 
 function PlayerListPage(props) {
-  const { setPageName, playerList, setPlayerList, totalParticipants } = props;
+  const { setPageName, totalParticipants } = props;
+  const { players, addPlayer, removePlayer, changePlayerName, setPlayerList } = usePlayers();
 
- 
-  useEffect(()=>{
-
+  useEffect(() => {
     const cachedPlayers = JSON.parse(localStorage.getItem('playerList'));
     if (cachedPlayers && cachedPlayers.length === totalParticipants) {
       setPlayerList(cachedPlayers);
@@ -23,28 +23,21 @@ function PlayerListPage(props) {
     }
     setPlayerList(participants);
     setPageName(PAGE_ROUTE.PLAYER_LIST);
-
-  },[])
+  }, []);
 
   const onChangeName = useCallback(
     (idx, e) => {
       const newValue = e.target.value;
 
-      // Create a copy of the current player list
-      const updatedPlayerList = [...playerList];
-
-      // Update the name of the player at the specified index
-      updatedPlayerList[idx] = { ...updatedPlayerList[idx], name: newValue };
-
-      // Set the updated player list
-      setPlayerList(updatedPlayerList);
+      changePlayerName(idx, newValue);
     },
-    [playerList],
+    [players],
   );
-  const goToNextPage = useCallback(()=>{
-    localStorage.setItem('playerList', JSON.stringify(playerList));
-    setPageName(PAGE_ROUTE.MATCHES)
-  },[setPageName, playerList])
+  console.log('players', players);
+  const goToNextPage = useCallback(() => {
+    localStorage.setItem('playerList', JSON.stringify(players));
+    setPageName(PAGE_ROUTE.MATCHES);
+  }, [setPageName, players]);
 
   return (
     <>
@@ -55,7 +48,7 @@ function PlayerListPage(props) {
         </div>
 
         <ul>
-          {playerList.map((player, idx) => {
+          {players.map((player, idx) => {
             return (
               <input
                 key={`player-${idx}`}
@@ -68,8 +61,8 @@ function PlayerListPage(props) {
         </ul>
       </div>
 
-      {playerList.length > 0 && (
-        <button className="action-btn" type="submit" onClick={e=>goToNextPage()}>
+      {players.length > 0 && (
+        <button className="action-btn" type="submit" onClick={e => goToNextPage()}>
           Create Match
         </button>
       )}
