@@ -11,19 +11,7 @@ function ActivePlayerListPage() {
   // Use callback to update player's active state
   const setInActivePlayer = useCallback(idx => setPlayerStatus(idx, false), []);
 
-  useEffect(() => {
-    const activePlayers = getActivePlayers();
-    const newRound = generateRounds(activePlayers)
 
-    const activePlayersName = getActivePlayers().map(player => player.name);
-    const completedMatches = matches.filter(match => !match.isActive);
-    
-    // console.log("newRound", activePlayers);
-    console.log("newRound", activePlayers, newRound);
-
-    // if (getActiveMatches.length === updateMatch.length) return;
-    // setMatchList(updateMatch);
-  }, []);
 
   return (
     <>

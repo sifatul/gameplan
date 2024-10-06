@@ -3,6 +3,7 @@ import { IoMdPeople } from 'react-icons/io';
 import { IoIosDoneAll } from 'react-icons/io';
 import { useMatch } from '../context/MatchContext';
 import { usePlayers } from '../context/PlayersContext';
+import { generateRounds } from '../utils/gameUtil';
 
 function MatchListPage(props) {
   
@@ -14,7 +15,17 @@ function MatchListPage(props) {
     [matches, setMatchList],
   );
 
-  
+
+  useEffect(() => {
+    const activePlayers = getActivePlayers();
+    let newRound = generateRounds(activePlayers)
+
+    const completedMatches = matches.filter(match => !match.isActive);
+    const updatedList = [...completedMatches, ...newRound]
+ 
+    setMatchList(updatedList)
+   
+  }, []);
 
   return (
     <>

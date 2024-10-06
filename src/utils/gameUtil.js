@@ -32,8 +32,3 @@ export function generateRounds(input) {
 
     return rounds.flatMap(round => round);
 }
-
-// Testing the function with three players
-// const players = ['Alice', 'Bob', 'Charlie'];
-// const result = generateRounds(players);
-// console.log(result);
