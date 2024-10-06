@@ -2,11 +2,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { IoMdPeople } from 'react-icons/io';
 import './MatchContainer.css';
 import MatchListPage from './MatchList';
-import PlayerListPage from '../Team/PlayerListPage';
 import ActivePlayerListPage from './activePlayerList';
+import { usePlayers } from '../context/PlayersContext';
 
 const MatchContainer = props => {
-  const { playerList = [], resetGame, setPlayerList } = props;
+  const { resetGame } = props;
+  const { players, addPlayer, removePlayer, changePlayerName, setPlayerList } = usePlayers();
   const [rounds, setRounds] = useState([]);
   const [activeTabIdx, setActiveTabIdx] = useState(0);
 
@@ -44,16 +45,21 @@ const MatchContainer = props => {
     return rounds;
   }
   useEffect(() => {
-    if (!playerList.length) {
+    if (!players.length) {
       const storedFixture = JSON.parse(localStorage.getItem('matches'));
       console.log('storedFixture', storedFixture);
       setRounds(storedFixture);
       return;
     }
-    const rounds = generateRounds(playerList);
+    const rounds = generateRounds(players);
     console.log('rounds', rounds);
     setRounds(rounds);
-  }, [playerList, setRounds]);
+  }, [players, setRounds]);
+
+  const resetGameHandler = useCallback(()=>{
+    setPlayerList([])
+    resetGame()
+  },[])
 
   const saveMatchInfo = () => {
     // Convert array to JSON string and save it to localStorage
@@ -80,14 +86,14 @@ const MatchContainer = props => {
         </div>
 
         {activeTabIdx === 0 &&  <MatchListPage rounds={rounds} setRounds={setRounds}/>}
-        {activeTabIdx === 1 &&  <ActivePlayerListPage playerList={playerList} setPlayerList={setPlayerList}/>}
+        {activeTabIdx === 1 &&  <ActivePlayerListPage />}
       </div>
-      {playerList.length > 0 && (
+      {players.length > 0 && (
         <button className="action-btn" type="submit" onClick={e => saveMatchInfo()}>
           Save
         </button>
       )}
-      <button className="action-btn" type="submit" onClick={e => resetGame()}>
+      <button className="action-btn" type="submit" onClick={e => resetGameHandler()}>
         reset
       </button>
     </>

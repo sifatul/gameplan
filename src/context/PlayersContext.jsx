@@ -27,8 +27,16 @@ export const PlayerProvider = ({ children }) => {
     );
   };
 
+  const changePlayerStatus = (index, newStatus) => {
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((player, idx) =>
+        idx === index ? { ...player, isActive: newStatus} : player
+      )
+    );
+  };
+
   return (
-    <PlayerContext.Provider value={{ players, addPlayer, removePlayer, changePlayerName, setPlayerList }}>
+    <PlayerContext.Provider value={{ players, addPlayer, removePlayer, changePlayerName, setPlayerList, changePlayerStatus }}>
       {children}
     </PlayerContext.Provider>
   );

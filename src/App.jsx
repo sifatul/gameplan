@@ -19,7 +19,6 @@ function App() {
   const resetGame = useCallback(() => {
     localStorage.removeItem('matches');
     setPageName(PAGE_ROUTE.LANDING_PAGE);
-    setPlayerList([]);
   }, []);
 
   useEffect(() => {
