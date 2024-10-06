@@ -28,6 +28,25 @@
  .match-team{
     align-items: center;
     margin: 10px 0;
-    justify-content: flex-start;
+    justify-content: space-between;
     display: flex;
+
+ }
+ .match-team:not(.active) span {
+    color: #999; /* Dim color for inactive players */
+  }
+  .match-team .IoIosWarning:hover {
+    transform: scale(1.2); /* Slight zoom on hover */
+    color: #e65100; /* Darker orange on hover */
+  }
+ .flex-row{
+    display: flex;
+    align-items: center;
+ }
+ .icon-inactive{
+  color: #999; /* Dim color for inactive players */
+ }
+ .long-list{
+  max-height: 100vh;
+  overflow: auto;
  }

@@ -18,6 +18,7 @@ function PlayerListPage(props) {
     for (let i = 1; i <= totalParticipants; i++) {
       participants.push({
         name: `Participant ${i}`,
+        isActive: true,
       });
     }
     setPlayerList(participants);

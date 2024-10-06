@@ -6,7 +6,7 @@ import PlayerListPage from '../Team/PlayerListPage';
 import ActivePlayerListPage from './activePlayerList';
 
 const MatchContainer = props => {
-  const { playerList = [], resetGame } = props;
+  const { playerList = [], resetGame, setPlayerList } = props;
   const [rounds, setRounds] = useState([]);
   const [activeTabIdx, setActiveTabIdx] = useState(0);
 
@@ -32,7 +32,7 @@ const MatchContainer = props => {
         const player1 = players[i];
         const player2 = players[numberOfPlayers - 1 - i];
         if (player1.name !== 'Bye' && player2.name !== 'Bye') {
-          currentRound.push([player1.name, player2.name]);
+          currentRound.push({team: [player1.name, player2.name], isActive: true});
         }
       }
       rounds.push(currentRound);
@@ -79,8 +79,8 @@ const MatchContainer = props => {
       </div>
         </div>
 
-        {activeTabIdx === 0 &&  <MatchListPage rounds={rounds} />}
-        {activeTabIdx === 1 &&  <ActivePlayerListPage playerList={playerList}/>}
+        {activeTabIdx === 0 &&  <MatchListPage rounds={rounds} setRounds={setRounds}/>}
+        {activeTabIdx === 1 &&  <ActivePlayerListPage playerList={playerList} setPlayerList={setPlayerList}/>}
       </div>
       {playerList.length > 0 && (
         <button className="action-btn" type="submit" onClick={e => saveMatchInfo()}>

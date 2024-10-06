@@ -47,7 +47,7 @@ function App() {
           totalParticipants={totalParticipants}
         ></PlayerListPage>
       )}
-      {pageName === PAGE_ROUTE.MATCHES && <MatchContainer playerList={playerList} resetGame={resetGame}></MatchContainer>}
+      {pageName === PAGE_ROUTE.MATCHES && <MatchContainer playerList={playerList} resetGame={resetGame} setPlayerList={setPlayerList}></MatchContainer>}
     </div>
   );
 }
