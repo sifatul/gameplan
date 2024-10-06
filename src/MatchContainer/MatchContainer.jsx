@@ -35,15 +35,6 @@ const MatchContainer = props => {
     // Convert array to JSON string and save it to localStorage
     localStorage.setItem('matches', JSON.stringify(rounds));
   };
-  const rePlan = useCallback(() => {
-    const activePlayersName = players.filter(player => player.isActive);
-    const activeRounds = rounds.filter(r => r.isActive);
-
-    const newRounds = generateRounds(activePlayersName);
-    const updatedRounds = [...activeRounds, ...newRounds];
-
-    console.log('activeTeams', updatedRounds);
-  }, [rounds]);
 
   return (
     <>
@@ -68,9 +59,6 @@ const MatchContainer = props => {
       </div>
       {players.length > 0 && activeTabIdx === 0 && (
         <>
-          <button className="action-btn" type="submit" onClick={e => rePlan()}>
-            exclude sick players
-          </button>
           <button className="action-btn" type="submit" onClick={e => saveMatchInfo()}>
             Save
           </button>
