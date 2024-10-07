@@ -5,6 +5,9 @@ import { useMatch } from '../context/MatchContext';
 import { generateRounds } from '../utils/gameUtil';
 import { FaBed } from "react-icons/fa";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import { TbBedOff } from "react-icons/tb";
+import { TbBed } from "react-icons/tb";
+
 
 
 
@@ -26,13 +29,12 @@ function ActivePlayerListPage() {
             <div key={`active-player-${index}-${isActive}`} className={`match-team ${isActive ? 'active' : ''}`}>
               {player.isActive}
               <div className="flex-row">
-                <IoMdPeople size={30} className={isActive ? '' : 'icon-inactive'} style={{ marginRight: '10px' }} />
+                <IoMdPeople size={25} className={isActive ? '' : 'icon-inactive'} style={{ marginRight: '10px' }} />
                 <span>{player.name}</span>
               </div>
-              {/* <FaBed /> */}
 
-              {!isActive && <FaBed size={20} onClick={() => handlePlayerStatusChange(index, true)} />}
-              {isActive && <AiOutlineCheckCircle size={20} onClick={() => handlePlayerStatusChange(index, false)} />}
+              {isActive && <TbBed size={25} onClick={() => handlePlayerStatusChange(index, false)} />}
+              {!isActive && <TbBedOff size={25} onClick={() => handlePlayerStatusChange(index, true)} />}
             </div>
           );
         })}

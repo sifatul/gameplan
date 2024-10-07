@@ -4,7 +4,7 @@ import { usePlayers } from '../context/PlayersContext';
 import './MatchContainer.css';
 import MatchListPage from './MatchList';
 import ActivePlayerListPage from './activePlayerList';
-import { generateRounds } from '../utils/gameUtil';
+import { generateRounds, scheduleMatches, sortMatches } from '../utils/gameUtil';
 
 const MatchContainer = props => {
   const { resetGame } = props;
@@ -21,9 +21,7 @@ const MatchContainer = props => {
       setMatchList(storedFixture);
       return;
     }
-    const rounds = generateRounds(players);
-    console.log('rounds', players, rounds);
-    setMatchList(rounds);
+     
   }, [players.length]);
 
   const saveMatchInfo = () => {
