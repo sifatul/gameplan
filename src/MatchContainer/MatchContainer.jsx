@@ -33,7 +33,7 @@ const MatchContainer = props => {
 
   return (
     <>
-      <div className="main-content matchContainer">
+      <div className="container main-content matchContainer">
         <div className="titleHolder">
           <h1>Match List</h1>
           <p>Games that you will play.</p>

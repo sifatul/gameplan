@@ -16,11 +16,13 @@ body, html {
 }
 .main-content{
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: calc(100vh - 50px);
   width: 100vw;
-  box-sizing: border-box;
-  padding: 15px;
+}
+.main-content input{
+  margin: 5px 0;
 }
 
 .action-btn{

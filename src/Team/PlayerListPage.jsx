@@ -41,7 +41,7 @@ function PlayerListPage(props) {
 
   return (
     <>
-      <div className="main-content playerList">
+      <div className="container main-content playerList">
         <div className="titleHolder">
           <h1>Player Setup</h1>
           <p>Easily organize your participants into teams.</p>

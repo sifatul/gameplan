@@ -76,9 +76,12 @@ input {
   max-width: 300px;
 }
 
-.main-content input{
-  margin: 5px 0;
+.container {
+  box-sizing: border-box;
+  padding: 15px;
 }
+
+
 
 /* @media (prefers-color-scheme: light) {
   :root {

@@ -9,7 +9,7 @@ function TeamContainer(props) {
 
   return (
     <>
-      <div className="main-content teamContainer">
+      <div className="container main-content teamContainer">
         <>
           <div className="titleHolder">
             <h1>Team Setup</h1>
