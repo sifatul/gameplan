@@ -26,11 +26,11 @@ function ActivePlayerListPage() {
               {player.isActive}
               <div className="flex-row">
                 <IoMdPeople size={25} className={isActive ? '' : 'icon-inactive'} style={{ marginRight: '10px' }} />
-                <span>{player.name}</span>
+                <span className='player-name'>{player.name}</span>
               </div>
 
-              {isActive && <TbBed size={25} onClick={() => handlePlayerStatusChange(index, false)} />}
-              {!isActive && <TbBedOff size={25} onClick={() => handlePlayerStatusChange(index, true)} />}
+              {isActive && <TbBed className="status-icon" size={25} onClick={() => handlePlayerStatusChange(index, false)} />}
+              {!isActive && <TbBedOff className="status-icon" size={25} onClick={() => handlePlayerStatusChange(index, true)} />}
             </div>
           );
         })}

@@ -33,7 +33,7 @@
   justify-content: space-between;
   display: flex;
   padding: 12px; /* Increased padding for better spacing */
-  border-radius: 8px; /* Increased border-radius for a smoother look */
+  border-radius: 4px; /* Increased border-radius for a smoother look */
   transition: background-color 0.3s; /* Smoother background transition */
   border: 1px solid transparent; /* Add a transparent border for consistent sizing */
 }
@@ -47,7 +47,7 @@
   background-color: #FFFFFF; /* White for inactive matches */
 }
 
-.match-team:not(.active) .team-name {
+.match-team:not(.active) .team-name, .match-team:not(.active) .player-name{
   color: #999; /* Dim color for inactive players */
 }
 
