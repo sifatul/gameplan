@@ -11,9 +11,10 @@ function ActivePlayerListPage() {
   const { players, setPlayerStatus, getActivePlayers } = usePlayers();
   const { matches, setMatchList, changeMatchStatus, getActiveMatches } = useMatch();
 
-  // Use callback to update player's active state
-  const handlePlayerStatusChange = useCallback((idx,status) => setPlayerStatus(idx, status), []);
-
+   
+  const handlePlayerStatusChange = useCallback((idx,status) => {
+    setPlayerStatus(idx, status)
+  }, []);
 
 
   return (

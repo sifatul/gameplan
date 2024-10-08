@@ -96,6 +96,7 @@ a:hover {
 
 ul {
   padding: 0;
+  margin: 0;
 }
 button {
   padding: 0.6em 1.2em;
@@ -131,13 +132,12 @@ button.secondary:hover {
 input {
   padding: 10px;
   width: 100%;
-  max-width: 300px;
-
   background-color: #F7F7F7; /* Light gray background for inputs */
   color: #000000; /* Black text for contrast */
   border: 1px solid #E5E5E5; /* Light gray border */
   border-radius: 4px; /* Rounded corners */
   outline: none; /* Remove default focus outline */
+  box-sizing: border-box;
 }
 input:focus-visible {
   border: 2px solid var(--color-orange);

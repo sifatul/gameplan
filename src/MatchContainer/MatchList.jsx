@@ -30,14 +30,17 @@ function MatchListPage(props) {
           return (
             <li key={`round-${roundIdx}`} className={`match-team ${isActive ? 'active' : ''}`}>
               <div className="flex-row">
-                <IoMdPeople className={isActive ? '' : 'icon-inactive'} size={20} style={{ marginRight: '10px' }} />
+                {/* <IoMdPeople className={isActive ? '' : 'icon-inactive'} size={20} style={{ marginRight: '10px' }} /> */}
                 <div>
                   <div className="team-name">{team1[0]}</div>
                   <div className="team-name">{team1[1]}</div>
                 </div>
               </div>
               <div className="flex-row">
-                <IoMdPeople className={isActive ? '' : 'icon-inactive'} size={20} style={{ marginRight: '10px' }} />
+                <span className='bold-text'>VS</span>
+              </div>
+              <div className="flex-row">
+                {/* <IoMdPeople className={isActive ? '' : 'icon-inactive'} size={20} style={{ marginRight: '10px' }} /> */}
                 <div>
                   <div className="team-name">{team2[0]}</div>
                   <div className="team-name">{team2[1]}</div>

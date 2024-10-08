@@ -23,6 +23,25 @@ const MatchContainer = props => {
      
   }, [players.length]);
 
+
+ 
+  useEffect(()=>{
+
+    const handleBackButton = (event) => {
+      // Perform state change when back button is pressed
+      setActiveTabIdx(0)
+      event.preventDefault(); // Prevent default behavior if needed
+    };
+
+    window.addEventListener('popstate', handleBackButton);
+
+    return () => {
+      window.removeEventListener('popstate', handleBackButton);
+    };
+
+  
+  },[])
+
   const saveMatchInfo = () => {
     // Convert array to JSON string and save it to localStorage
     localStorage.setItem('matches', JSON.stringify(rounds));

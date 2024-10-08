@@ -47,13 +47,22 @@
   background-color: #FFFFFF; /* White for inactive matches */
 }
 
-.match-team:not(.active) .team-name, .match-team:not(.active) .player-name{
+.match-team:not(.active) .team-name, 
+.match-team:not(.active) .player-name, 
+.match-team:not(.active) .bold-text,
+.match-team:not(.active) .status-icon{
   color: #999; /* Dim color for inactive players */
 }
 
 .flex-row {
   display: flex;
   align-items: center;
+}
+
+.bold-text{
+  font-weight: bolder;
+  color: #14213D;
+  font-size: larger;
 }
 
 .icon-inactive {
@@ -76,9 +85,4 @@
 .status-icon:hover {
   transform: scale(1.2); /* Zoom effect on hover */
   color: #14213D; /* Dark blue on hover */
-}
-
-.team-name {
-  font-weight: bold; /* Bold team names */
-  color: #14213D; /* Dark blue color for team names */
 }
