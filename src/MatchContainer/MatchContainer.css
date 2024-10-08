@@ -78,11 +78,11 @@
 
 .status-icon {
   cursor: pointer; /* Show pointer on hover */
-  color: #FCA311; /* Orange color for active status */
+  color: #14213D; /* Orange color for active status */
   transition: transform 0.2s, color 0.2s; /* Smooth zoom and color transition on hover */
 }
 
 .status-icon:hover {
   transform: scale(1.2); /* Zoom effect on hover */
-  color: #14213D; /* Dark blue on hover */
+  color: #1A315F; /* Dark blue on hover */
 }
