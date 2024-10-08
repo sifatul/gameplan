@@ -9,7 +9,9 @@ function MatchListPage(props) {
   const { matches, setMatchList, changeMatchStatus } = useMatch();
   const { players, addPlayer, removePlayer, changePlayerName, getActivePlayers } = usePlayers();
 
-  const handleGameStatusUpdate = useCallback((roundIdx, status) => changeMatchStatus(roundIdx, status), []);
+  const handleGameStatusUpdate = useCallback((roundIdx, status) => {
+    changeMatchStatus(roundIdx, status)
+  }, []);
 
   useEffect(() => {
     const activePlayers = getActivePlayers();
@@ -26,23 +28,32 @@ function MatchListPage(props) {
         {matches.map((round, roundIdx) => {
           const { isActive, team1, team2 } = round;
           return (
-            <div key={`round-${roundIdx}`}>
-              <div className={`match-team ${isActive ? 'active' : ''}`}>
-                <div className="flex-row">
-                  <IoMdPeople className={isActive ? '' : 'icon-inactive'} size={20} style={{ marginRight: '10px' }} />
-                  <div>
-                    <span> {team1[0]}</span> & <span>{team1[1]}</span> <br></br>
-                    <span> {team2[0]}</span> & <span>{team2[1]}</span>
-                  </div>
+            <li key={`round-${roundIdx}`} className={`match-team ${isActive ? 'active' : ''}`}>
+              <div className="flex-row">
+                <IoMdPeople className={isActive ? '' : 'icon-inactive'} size={20} style={{ marginRight: '10px' }} />
+                <div>
+                  <div className="team-name">{team1[0]}</div>
+                  <div className="team-name">{team1[1]}</div>
                 </div>
-                {isActive && <MdCheckCircleOutline size={25} onClick={e => handleGameStatusUpdate(roundIdx, false)} />}
-                {!isActive && <MdCheckCircle size={25} onClick={e => handleGameStatusUpdate(roundIdx, true)} />}
               </div>
-            </div>
+              <div className="flex-row">
+                <IoMdPeople className={isActive ? '' : 'icon-inactive'} size={20} style={{ marginRight: '10px' }} />
+                <div>
+                  <div className="team-name">{team2[0]}</div>
+                  <div className="team-name">{team2[1]}</div>
+                </div>
+              </div>
+              {isActive ? (
+                <MdCheckCircle size={25} onClick={() => handleGameStatusUpdate(roundIdx, false)} className="status-icon" />
+              ) : (
+                <MdCheckCircleOutline size={25} onClick={() => handleGameStatusUpdate(roundIdx, true)} className="status-icon" />
+              )}
+            </li>
           );
         })}
       </ul>
     </>
   );
 }
+
 export default MatchListPage;

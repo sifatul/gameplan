@@ -1,104 +1,123 @@
-#root {
-  width: 100%;
-}
-body, html {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
 .App {
   display: flex;
   flex-direction: column;
-  /* padding: 20px; */
-  /* height: calc(100vh - 20px); */
   justify-content: space-between;
+  height: 100vh; /* Ensure the App takes full height */
 }
-.main-content{
+
+.main-content {
   position: relative;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 50px);
   width: 100vw;
-}
-.main-content input{
-  margin: 5px 0;
+  padding: 0 20px; /* Added horizontal padding for better spacing */
+  box-sizing: border-box; /* Ensure padding is included in total width */
 }
 
-.action-btn{
+.main-content input {
+  margin: 10px 0; /* Increased margin for better spacing */
+ 
+}
+
+ 
+
+.action-btn {
   height: 50px;
+  background-color: #FCA311; /* Dark blue for action buttons */
+  color: #FFFFFF; /* White text */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.25s, transform 0.1s; /* Smooth transition for background color and scale */
+  border-radius: 4px; /* Rounded corners for buttons */
+}
+
+.action-btn:hover {
+  background-color: #FFFFFF; /* Change background on hover */
+  color: #FCA311; /* Change text color on hover */
+  transform: scale(1.05); /* Slightly scale up on hover for a better visual cue */
 }
 
 .PlayerList {
   flex: 1;
-  background-color: #f7f7f7;
+  background-color: #ffffff; /* White background for PlayerList */
   padding: 20px;
-  border-left: 2px solid #ccc;
+  border-left: 2px solid #ccc; /* Light gray border */
   height: 100vh;
-  overflow-y: auto;
-  color: black
+  overflow-y: auto; /* Enable scrolling if content exceeds height */
+  color: #000000; /* Black text */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-
-
-
-
 .team h3 {
-  color: #007bff;
+  color: #14213D; /* Dark blue for team headings */
+  font-weight: bold; /* Bold team headings */
 }
 
 .match h3 {
-  color: #28a745;
+  color: #28a745; /* Green for match headings */
+  font-weight: bold; /* Bold match headings */
 }
 
 .match-result h3 {
-  color: #d9534f;
+  color: #d9534f; /* Red for match results */
+  font-weight: bold; /* Bold match result headings */
 }
 
 .match .scores input {
   width: 50px;
   text-align: center;
-}
-.titleHolder{
-  padding: 10px 0;
-  min-height: 120px;
-}
-.titleHolder h1{
-  margin-bottom: 0;
-}
-.titleHolder p{
-  margin-top: 0;
+  margin: 5px; /* Added margin for spacing between inputs */
+  padding: 8px; /* Added padding for comfort */
+  border-radius: 4px; /* Rounded corners */
+  border: 1px solid #E5E5E5; /* Light gray border for scores */
 }
 
+.titleHolder {
+  padding: 20px 0; /* Increased padding for better spacing */
+  min-height: 120px;
+  text-align: center; /* Center align title holder content */
+}
+
+.titleHolder h1 {
+  margin: 0; /* Remove bottom margin */
+  color: #000000; /* Black for main title */
+  font-size: 2em; /* Increased font size for emphasis */
+}
+
+.titleHolder p {
+  margin-top: 10px; /* Added margin to separate from title */
+}
 
 /* Add responsiveness */
 @media (max-width: 350px) {
-  /* .App {
-    flex-direction: column;
-    padding: 15px;
-  } */
- 
   .PlayerList {
     flex: unset;
     width: 100%;
-    height: auto;
-    padding: 20px;
-    border-left: none;
-    margin-top: 20px;
-    box-sizing: border-box;
+    height: auto; /* Allow height to be auto for smaller screens */
+    padding: 15px; /* Adjusted padding for smaller screens */
+    border-left: none; /* Remove left border */
+    margin-top: 20px; /* Space from top */
+    box-sizing: border-box; /* Include padding in width */
+    box-shadow: none; /* Remove shadow for smaller screens */
   }
+  
   input {
     width: 100%; /* Make inputs take full width of their container */
     box-sizing: border-box; /* Ensure padding and borders are included in the input width */
-    padding: 10px;
-    margin: 5px 0; 
+    padding: 12px; /* Consistent padding */
+    margin: 10px 0; /* Consistent margin */
+    border: 1px solid #FCA311; /* Dark blue border */
+    border-radius: 4px; /* Rounded corners */
   }
+  
   form {
     width: 100%;
     max-width: 100%; /* Ensure the form doesn't exceed the width of the container */
     box-sizing: border-box; /* Include padding and border in the element's total width */
   }
-  .titleHolder, .titleHolder h1{
-    padding-top: 0;;
+  
+  .titleHolder, .titleHolder h1 {
+    padding-top: 0; /* Remove top padding */
   }
 }

@@ -1,52 +1,83 @@
 .custom-tabs {
-    display: flex;
-    border-bottom: 2px solid #ddd;
+  display: flex;
+  border-bottom: 2px solid #E5E5E5; /* Use a light gray for better visibility */
 }
+
 .custom-tabs-item {
-    flex: 1; /* This makes the children take up equal space */
-     
-    border: 1px solid #ccc;
-    text-align: center;
-
-    padding: 10px 20px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-bottom: none;
-    background-color: #f0f0f0;
+  flex: 1;
+  border: 1px solid #ccc; /* Light gray border for each tab */
+  text-align: center;
+  padding: 12px 20px; /* Increased padding for better touch targets */
+  cursor: pointer;
+  background-color: #FFFFFF; /* White background for tabs */
+  transition: background-color 0.2s, border 0.2s, color 0.2s; /* Added color transition */
+  border-radius: 5px 5px 0 0; /* Rounded top corners for tabs */
 }
+
 .custom-tabs-item:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .custom-tabs-item.active {
-    background-color: white;
-    border-bottom: 2px solid white; /* Make it look connected to the content */
-    font-weight: bold;
-    color: #333;
-  }
+  background-color: #FCA311; /* Orange on hover */
+  color: #FFFFFF; /* Change text color on hover */
+}
 
- .match-team{
-    align-items: center;
-    margin: 10px 0;
-    justify-content: space-between;
-    display: flex;
+.custom-tabs-item.active {
+  background-color: #FFFFFF; /* White background for active tab */
+  border-bottom: 2px solid #FCA311; /* Orange underline for active tab */
+  font-weight: bold; /* Bold text for active tab */
+  color: #14213D; /* Dark blue text for active tab */
+}
 
- }
- .match-team:not(.active) span {
-    color: #999; /* Dim color for inactive players */
-  }
-  .match-team .IoIosWarning:hover {
-    transform: scale(1.2); /* Slight zoom on hover */
-    color: #e65100; /* Darker orange on hover */
-  }
- .flex-row{
-    display: flex;
-    align-items: center;
- }
- .icon-inactive{
+.match-team {
+  align-items: center;
+  margin: 10px 0;
+  justify-content: space-between;
+  display: flex;
+  padding: 12px; /* Increased padding for better spacing */
+  border-radius: 8px; /* Increased border-radius for a smoother look */
+  transition: background-color 0.3s; /* Smoother background transition */
+  border: 1px solid transparent; /* Add a transparent border for consistent sizing */
+}
+
+.match-team.active {
+  background-color: #E5E5E5; /* Light gray for active matches */
+  border: 1px solid #FCA311; /* Orange border for active matches */
+}
+
+.match-team:not(.active) {
+  background-color: #FFFFFF; /* White for inactive matches */
+}
+
+.match-team:not(.active) .team-name {
   color: #999; /* Dim color for inactive players */
- }
- .long-list{
-  max-height: 100vh;
-  overflow: auto;
- }
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.icon-inactive {
+  color: #999; /* Dim color for inactive icons */
+}
+
+.long-list {
+  max-height: 100vh; /* Maximum height for scrollable list */
+  overflow: auto; /* Enable scrolling */
+  padding: 0; /* Reset padding for the list */
+  list-style-type: none; /* Remove default list styling */
+}
+
+.status-icon {
+  cursor: pointer; /* Show pointer on hover */
+  color: #FCA311; /* Orange color for active status */
+  transition: transform 0.2s, color 0.2s; /* Smooth zoom and color transition on hover */
+}
+
+.status-icon:hover {
+  transform: scale(1.2); /* Zoom effect on hover */
+  color: #14213D; /* Dark blue on hover */
+}
+
+.team-name {
+  font-weight: bold; /* Bold team names */
+  color: #14213D; /* Dark blue color for team names */
+}
