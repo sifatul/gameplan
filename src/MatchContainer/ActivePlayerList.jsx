@@ -1,12 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
-import { IoIosWarning, IoMdPeople } from 'react-icons/io';
-import { usePlayers } from '../context/PlayersContext';
+import React, { useCallback } from 'react';
+import { IoMdPeople } from 'react-icons/io';
+import { TbBed, TbBedOff } from "react-icons/tb";
 import { useMatch } from '../context/MatchContext';
-import { generateRounds } from '../utils/gameUtil';
-import { FaBed } from "react-icons/fa";
-import { AiOutlineCheckCircle } from "react-icons/ai";
-import { TbBedOff } from "react-icons/tb";
-import { TbBed } from "react-icons/tb";
+import { usePlayers } from '../context/PlayersContext';
 
 
 

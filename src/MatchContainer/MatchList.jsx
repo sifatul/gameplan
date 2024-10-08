@@ -1,11 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { IoMdPeople } from 'react-icons/io';
-import { IoIosDoneAll } from 'react-icons/io';
+import { MdCheckCircle, MdCheckCircleOutline } from 'react-icons/md';
 import { useMatch } from '../context/MatchContext';
 import { usePlayers } from '../context/PlayersContext';
-import { generateRounds, scheduleMatches, sortMatches } from '../utils/gameUtil';
-import { MdCheckCircleOutline } from 'react-icons/md';
-import { MdCheckCircle } from 'react-icons/md';
+import { scheduleMatches } from '../utils/gameUtil';
 
 function MatchListPage(props) {
   const { matches, setMatchList, changeMatchStatus } = useMatch();

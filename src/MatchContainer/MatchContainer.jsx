@@ -1,10 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMatch } from '../context/MatchContext';
 import { usePlayers } from '../context/PlayersContext';
 import './MatchContainer.css';
 import MatchListPage from './MatchList';
 import ActivePlayerListPage from './activePlayerList';
-import { generateRounds, scheduleMatches, sortMatches } from '../utils/gameUtil';
 
 const MatchContainer = props => {
   const { resetGame } = props;
@@ -16,9 +15,9 @@ const MatchContainer = props => {
  
   useEffect(() => {
     if (!players.length) {
-      const storedFixture = JSON.parse(localStorage.getItem('matches'));
-      console.log('storedFixture', storedFixture);
-      setMatchList(storedFixture);
+      // const storedFixture = JSON.parse(localStorage.getItem('matches'));
+      // console.log('storedFixture', storedFixture);
+      // setMatchList(storedFixture);
       return;
     }
      
