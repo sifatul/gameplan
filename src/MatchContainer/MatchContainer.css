@@ -1,17 +1,18 @@
 .custom-tabs {
   display: flex;
-  border-bottom: 2px solid #E5E5E5; /* Use a light gray for better visibility */
+  border-bottom: 2px solid #E5E5E5; /* Light gray border for the tab container */
 }
 
 .custom-tabs-item {
   flex: 1;
-  border: 1px solid #ccc; /* Light gray border for each tab */
+  border: 1px solid #E5E5E5; /* Lighter gray border for each tab */
   text-align: center;
   padding: 12px 20px; /* Increased padding for better touch targets */
   cursor: pointer;
-  background-color: #FFFFFF; /* White background for tabs */
+  background-color: #FAFAFA; /* Soft light grey background for tabs */
   transition: background-color 0.2s, border 0.2s, color 0.2s; /* Added color transition */
   border-radius: 5px 5px 0 0; /* Rounded top corners for tabs */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .custom-tabs-item:hover {
@@ -38,8 +39,8 @@
 }
 
 .match-team.active {
-  background-color: #E5E5E5; /* Light gray for active matches */
-  border: 1px solid #FCA311; /* Orange border for active matches */
+  background-color: #F7F7F7; /* Softer light grey for active matches */
+  border: 1px solid #E5E5E5;
 }
 
 .match-team:not(.active) {
