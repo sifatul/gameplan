@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-app-cache';
+const CACHE_NAME = 'my-app-cache-v1'; // Increment this version to refresh cache
 const urlsToCache = [
   '/',
   '/gameplan/index.html',
@@ -15,12 +15,47 @@ self.addEventListener('install', event => {
   );
 });
 
+// Activate event - delete old caches
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(name => {
+          if (name !== CACHE_NAME) {
+            return caches.delete(name); // Delete old caches
+          }
+        })
+      );
+    })
+  );
+});
+
 // Serve cached content when offline
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
+  // Cache-first strategy for specific assets
+  if (event.request.url.includes('/gameplan/')) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(response => {
+          return response || fetch(event.request).then(networkResponse => {
+            return caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, networkResponse.clone()); // Cache the new response
+              return networkResponse;
+            });
+          });
+        })
+        .catch(() => {
+          // Fallback if both cache and network fail
+          console.error('Fetch failed; returning offline page instead.');
+          return caches.match('/gameplan/index.html'); // Optional offline page
+        })
+    );
+  } else {
+    // Default network-first strategy for other requests
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        return caches.match(event.request); // Fall back to cache
       })
-  );
+    );
+  }
 });
