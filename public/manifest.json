@@ -8,7 +8,7 @@
       "type": "image/webp"
     },
     {
-      "src": "vite.jpg",
+      "src": "favicon-64x64.jpeg",
       "sizes": "64x64",
       "type": "image/jpeg",
       "purpose": "any"

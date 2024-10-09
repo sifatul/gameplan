@@ -42,29 +42,49 @@ function WebApp() {
                         position: 'fixed',
                         bottom: 0,
                         width: '100%',
-                        background: '#333',
+                        background: '#14213D', // Dark Blue
                         color: 'white',
                         textAlign: 'center',
                         padding: '10px',
                         zIndex: 1000, // Ensure the install banner stays on top
                     }}
-                    role="alert"
+                    role="banner"
                 >
-                    <p>Install our app for a better experience!</p>
+                    <p>Maximize your experience! Install our app for a smoother journey tailored just for you.!</p>
                     <button
                         id="installButton"
                         onClick={handleInstallClick}
-                        aria-label="Install Game Plan App"
+                        aria-label="Install App"
                         style={{
                             padding: '10px 20px',
-                            background: '#fff',
+                            background: '#FCA311', // Orange
                             color: '#333',
                             border: 'none',
                             borderRadius: '5px',
                             cursor: 'pointer',
+                            marginTop: '10px',
+                            transition: 'background 0.3s', // Smooth hover transition
                         }}
+                        onMouseOver={e => (e.currentTarget.style.background = '#E69508')}
+                        onMouseOut={e => (e.currentTarget.style.background = '#FCA311')}
                     >
                         Install
+                    </button>
+                    <button
+                        onClick={() => setInstallPromptVisible(false)} // Close button
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            color: 'white',
+                            fontSize: '20px',
+                            position: 'absolute',
+                            top: '-2px',
+                            right: '10px',
+                            cursor: 'pointer',
+                        }}
+                        aria-label="Close install prompt"
+                    >
+                        &times; {/* Close icon */}
                     </button>
                 </div>
             )}
