@@ -11,7 +11,7 @@ function ActivePlayerListPage() {
   const { players, setPlayerStatus, getActivePlayers } = usePlayers();
   const { matches, setMatchList, changeMatchStatus, getActiveMatches } = useMatch();
 
-   
+   const activePlayers = getActivePlayers()
   const handlePlayerStatusChange = useCallback((idx,status) => {
     setPlayerStatus(idx, status)
   }, []);
@@ -30,7 +30,7 @@ function ActivePlayerListPage() {
                 <span className='player-name'>{player.name}</span>
               </div>
 
-              {isActive && <TbBed className="status-icon" size={25} onClick={() => handlePlayerStatusChange(index, false)} />}
+              {isActive && activePlayers.length > 4 && <TbBed className="status-icon" size={25} onClick={() => handlePlayerStatusChange(index, false)} />}
               {!isActive && <TbBedOff className="status-icon" size={25} onClick={() => handlePlayerStatusChange(index, true)} />}
             </div>
           );
