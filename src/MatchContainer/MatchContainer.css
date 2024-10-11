@@ -86,3 +86,29 @@
   transform: scale(1.2); /* Zoom effect on hover */
   color: #1A315F; /* Dark blue on hover */
 }
+.w-35{
+  width: 35%;
+}
+.w-10{
+  width: 10%;
+}
+
+.w-15{
+  width: 15%;
+}
+.grow-1{
+  flex-grow: 1;
+}
+.grow-2{
+  flex-grow: 2;
+}
+.align-left{
+  justify-content: left;
+}
+
+.align-right{
+  justify-content: right;
+}
+.align-center{
+  justify-content: center;
+}
