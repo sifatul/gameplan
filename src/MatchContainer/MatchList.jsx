@@ -38,21 +38,20 @@ function MatchListPage(props) {
                   <div className="team-name">{team1[1]}</div>
                 </div>
               </div>
-              <div className="align-center w-15">
+              <div className="flex-row align-center w-15">
                 <span className='bold-text'>VS</span>
               </div>
-              <div className="flex-row grow-2 w-35">
-                {/* <IoMdPeople className={isActive ? '' : 'icon-inactive'} size={20} style={{ marginRight: '10px' }} /> */}
-                <div>
-                  <div className="team-name">{team2[0]}</div>
-                  <div className="team-name">{team2[1]}</div>
+              <div className="flex-row w-35">
+                <div className='name-area'>
+                <div className="team-name">{team2[0]}</div>
+                <div className="team-name">{team2[1]}</div>
                 </div>
               </div>
               <div className='flex-row w-15 align-center'>
               {isActive ? (
-                <FaRegCircle size={30} onClick={() => handleGameStatusUpdate(roundIdx, false)} className="status-icon" />
+                <FaRegCircle size={28} onClick={() => handleGameStatusUpdate(roundIdx, false)} className="status-icon" />
               ) : (
-                <MdCheckCircleOutline size={30} onClick={() => handleGameStatusUpdate(roundIdx, true)} className="status-icon" />
+                <MdCheckCircleOutline size={28} onClick={() => handleGameStatusUpdate(roundIdx, true)} className="status-icon" />
               )}
               </div>
             </li>

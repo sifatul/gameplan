@@ -47,6 +47,16 @@
   background-color: #FFFFFF; /* White for inactive matches */
 }
 
+.team-name{
+  width: 90%;          /* Set a fixed width or max-width */
+  white-space: nowrap;   /* Prevent text from wrapping */
+  overflow: hidden;      /* Hide overflow text */
+  text-overflow: ellipsis; /* Show ellipsis (...) */
+}
+.name-area{
+  width: 100%;
+}
+
 .match-team:not(.active) .team-name, 
 .match-team:not(.active) .player-name, 
 .match-team:not(.active) .bold-text,
@@ -96,12 +106,7 @@
 .w-15{
   width: 15%;
 }
-.grow-1{
-  flex-grow: 1;
-}
-.grow-2{
-  flex-grow: 2;
-}
+ 
 .align-left{
   justify-content: left;
 }

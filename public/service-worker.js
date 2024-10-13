@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-app-cache-v2'; // Increment this version to refresh cache
+const CACHE_NAME = 'my-app-cache-v3'; // Increment this version to refresh cache
 const urlsToCache = [
   '/',
   '/gameplan/index.html',

@@ -15,9 +15,9 @@ const MatchContainer = props => {
  
   useEffect(() => {
     if (!players.length) {
-      // const storedFixture = JSON.parse(localStorage.getItem('matches'));
-      // console.log('storedFixture', storedFixture);
-      // setMatchList(storedFixture);
+      const storedFixture = JSON.parse(localStorage.getItem('matches'));
+      console.log('storedFixture', storedFixture);
+      setMatchList(storedFixture);
       return;
     }
      
