@@ -30,7 +30,9 @@ function Home() {
   return (
     <div className="App">
       {pageName === PAGE_ROUTE.LANDING_PAGE && (
-        <LandingPage  setPageName={setPageName}/>
+        <MatchProvider>
+          <LandingPage  setPageName={setPageName}/>
+        </MatchProvider>
       )}
       {pageName === PAGE_ROUTE.PLAYER_SETUP_PAGE && (
         <TeamContainer
@@ -43,11 +45,6 @@ function Home() {
         {pageName === PAGE_ROUTE.PLAYER_LIST && (
           <PlayerListPage setPageName={setPageName} totalParticipants={totalParticipants}></PlayerListPage>
         )}
-        {/* {pageName === PAGE_ROUTE.GAME_TYPE_SELECTION_PAGE && (
-          <MatchProvider>
-            <GameSelectionPage setPageName={setPageName}></GameSelectionPage>
-          </MatchProvider>
-        )} */}
         {pageName === PAGE_ROUTE.MATCHES && (
           <MatchProvider>
             <MatchContainer resetGame={resetGame}></MatchContainer>

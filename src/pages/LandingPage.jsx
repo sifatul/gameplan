@@ -1,24 +1,27 @@
 import React, { useCallback, useState } from 'react';
-import '../styles/TeamContainer.css';
-import { IoMdArrowRoundBack } from 'react-icons/io';
+import { GAME_TYPE, MATCH_TYPE } from '../enums/match-defaults.enum';
 import { PAGE_ROUTE } from '../enums/routes.enum';
+import '../styles/TeamContainer.css';
+import { useMatch } from '../context/MatchContext';
 
-function GameSetupPage(props) {
+function LandingPage(props) {
   const { setPageName } = props;
+  const { matches, matchSetupInfo, setGameType, setMatchType } = useMatch();
+  
 
-  const [gameType, setGameType] = useState('Doubles');
-  const [matchType, setMatchType] = useState('Friendly');
+  // const [gameType, setGameType] = useState(GAME_TYPE.DOUBLES);
+  // const [matchType, setMatchType] = useState(MATCH_TYPE.FRIENDLY);
 
   const goToNextPage = useCallback(() => {
     setPageName(PAGE_ROUTE.PLAYER_SETUP_PAGE);
   }, [setPageName]);
 
-  const gameTypeOptions = ['Singles', 'Doubles'];
-  const matchTypeOptions = ['Friendly', 'Tournament'];
+  const gameTypeOptions = [GAME_TYPE.SINGLES, GAME_TYPE.DOUBLES];
+  const matchTypeOptions = [MATCH_TYPE.FRIENDLY, MATCH_TYPE.TOURNAMENT];
 
   return (
     <>
-      <div className="container main-content gameSetupPage">
+      <div className="container main-content LandingPage">
         <div className="titleHolder">
           <div className="title-flex">
             <h1 className="centered-title">Game Setup</h1>
@@ -31,7 +34,7 @@ function GameSetupPage(props) {
           <h2 className="section-title">Choose Game Type</h2>
           <div className="card-container" >
             {gameTypeOptions.map(option => (
-              <div key={option} className={`card card-rect ${gameType === option ? 'selected' : ''}`} onClick={() => setGameType(option)}>
+              <div key={option} className={`card card-rect ${matchSetupInfo.gameType === option ? 'selected' : ''}`} onClick={() => setGameType(option)}>
                 {option}
               </div>
             ))}
@@ -43,7 +46,7 @@ function GameSetupPage(props) {
           <h2 className="section-title">Choose Match Type</h2>
           <div className="card-container">
             {matchTypeOptions.map(option => (
-              <div key={option} className={`card card-bg ${matchType === option ? 'selected' : ''}`} onClick={() => setMatchType(option)}>
+              <div key={option} className={`card card-bg ${matchSetupInfo.matchType === option ? 'selected' : ''}`} onClick={() => setMatchType(option)}>
                 {option}
               </div>
             ))}
@@ -58,4 +61,4 @@ function GameSetupPage(props) {
   );
 }
 
-export default GameSetupPage;
+export default LandingPage;

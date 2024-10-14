@@ -45,7 +45,7 @@ function TeamContainer(props) {
               {count} Players
             </div>
           ))}
-          <div className={`card hidden`}>Hidden</div>
+          <div className={`card card-sm hidden`}>Hidden</div>
         </div>
         <div className="flex-row align-center">
           <span className="or-divider">OR</span>
