@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import MatchContainer from './MatchContainer/MatchContainer';
 import TeamContainer from './Team/TeamContainer';
-import PlayerListPage from './Team/PlayerListPage';
+import PlayerListPage from './Team/PlayerSetup';
 import { PlayerProvider } from './context/PlayersContext'; // Import the TodoProvider
 import { MatchProvider } from './context/MatchContext';
 export const PAGE_ROUTE = {
@@ -13,7 +13,7 @@ export const PAGE_ROUTE = {
 
 function App() {
   const [pageName, setPageName] = useState(PAGE_ROUTE.LANDING_PAGE);
-  const [totalParticipants, setTotalParticipants] = useState(6);
+  const [totalParticipants, setTotalParticipants] = useState(4);
 
   const resetGame = useCallback(() => {
     localStorage.removeItem('matches');

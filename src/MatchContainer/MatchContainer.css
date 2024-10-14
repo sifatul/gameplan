@@ -21,10 +21,10 @@
 }
 
 .custom-tabs-item.active {
-  background-color: #FFFFFF; /* White background for active tab */
+  background-color: #14213D; /* White background for active tab */
   border-bottom: 2px solid #FCA311; /* Orange underline for active tab */
   font-weight: bold; /* Bold text for active tab */
-  color: #14213D; /* Dark blue text for active tab */
+  color: #FFFFFF; /* Dark blue text for active tab */
 }
 
 .match-team {

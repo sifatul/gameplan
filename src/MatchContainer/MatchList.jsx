@@ -48,12 +48,13 @@ function MatchListPage(props) {
                 </div>
               </div>
               <div className='flex-row w-15 align-center'>
-              {isActive ? (
-                <FaRegCircle size={28} onClick={() => handleGameStatusUpdate(roundIdx, false)} className="status-icon" />
-              ) : (
-                <MdCheckCircleOutline size={28} onClick={() => handleGameStatusUpdate(roundIdx, true)} className="status-icon" />
-              )}
-              </div>
+  {isActive ? (
+    <FaRegCircle size={28} onClick={() => handleGameStatusUpdate(roundIdx, false)} className="status-icon" title="Mark as inactive" />
+  ) : (
+    <MdCheckCircleOutline size={28} onClick={() => handleGameStatusUpdate(roundIdx, true)} className="status-icon" title="Mark as active" />
+  )}
+</div>
+
             </li>
           );
         })}

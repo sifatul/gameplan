@@ -6,44 +6,7 @@
    White: #FFFFFF 
 */
 
-/* ### Color Palette
-- **Primary Color**: 
-  - **Dark Blue**: `#14213D`
-  
-- **Secondary Color**:
-  - **Orange**: `#FCA311`
-  
-- **Supporting Colors**:
-  - **Light Gray**: `#E5E5E5`
-  - **Black**: `#000000`
-  - **White**: `#FFFFFF`
-
-### Usage Recommendations
-1. **Primary Color (`Dark Blue: #14213D`)**:
-   - **Use for**: Backgrounds of buttons, headers, borders, and primary links.
-   - **Why**: Conveys professionalism and reliability.
-  
-2. **Secondary Color (`Orange: #FCA311`)**:
-   - **Use for**: Hover states, accents, secondary buttons, and alerts.
-   - **Why**: Vibrant and energetic, ideal for call-to-action elements.
-
-3. **Supporting Colors**:
-   - **Light Gray**: Backgrounds for containers or sections.
-   - **Black**: Text for readability and contrast.
-   - **White**: Clean backgrounds and text on dark elements.
-
-### Example Use Cases
-- **Buttons**: 
-  - **Primary**: Dark blue with white text.
-  - **Secondary**: Light gray with dark blue text; orange border on hover.
-
-- **Headings**: Dark blue for major headings, black for subheadings.
-
-- **Links**: Dark blue links with orange hover state.
-
-- **Containers**: Light gray for backgrounds to separate content.
-
-*/
+ 
 
 :root {
   /* General Styles */
@@ -138,6 +101,7 @@ input {
   border-radius: 4px; /* Rounded corners */
   outline: none; /* Remove default focus outline */
   box-sizing: border-box;
+  font-size: 1em;
 }
 input:focus-visible {
   border: 2px solid var(--color-orange);
@@ -148,3 +112,23 @@ input:focus-visible {
 }
 
  
+
+
+/* Add responsiveness */
+@media (max-width: 350px) {
+  input {
+    font-size: 1em;
+    width: 100%; 
+    box-sizing: border-box; 
+    padding: 12px; /* Consistent padding */
+    margin: 10px 0; /* Consistent margin */
+    border: 1px solid #FCA311; /* Dark blue border */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  form {
+    width: 100%;
+    max-width: 100%; /* Ensure the form doesn't exceed the width of the container */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+  }
+}

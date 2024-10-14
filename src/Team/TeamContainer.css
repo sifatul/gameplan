@@ -1,0 +1,81 @@
+/* Card container for aligning the cards */
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Style for individual cards */
+.card {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card:hover {
+  background-color: #fca311;
+  color: white;
+}
+
+.card.selected {
+  background-color: #14213d;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+.card.hidden{
+  visibility: hidden;
+}
+
+/* Manual input container for custom number of participants */
+.manual-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.manual-input-container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.manual-input-container input {
+    width: 80%;
+    /* padding: 10px; */
+    /* font-size: 1em; */
+    /* border-radius: 8px; */
+    /* border: 1px solid #ccc; */
+    text-align: center;
+}
+
+.manual-input-container input:focus {
+  outline: none;
+  border-color: #fca311;
+  box-shadow: 0 0 5px rgba(252, 163, 17, 0.5);
+}
+
+/* Error message styling */
+.error-message {
+  color: #D32F2F;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.or-divider{
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 20px;
+}

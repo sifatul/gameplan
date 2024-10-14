@@ -24,12 +24,12 @@
 
 .action-btn {
   height: 50px;
-  background-color: #FCA311; /* Dark blue for action buttons */
+  background-color: #14213D; /* Dark blue for action buttons */
   color: #FFFFFF; /* White text */
   border: none; /* No border */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.25s, transform 0.1s; /* Smooth transition for background color and scale */
-  border-radius: 4px; /* Rounded corners for buttons */
+  border-radius: 4px 4px 0px 0; /* Rounded corners for buttons */
 }
 
 .action-btn:hover {
@@ -101,23 +101,32 @@
     box-sizing: border-box; /* Include padding in width */
     box-shadow: none; /* Remove shadow for smaller screens */
   }
-  
-  input {
-    width: 100%; /* Make inputs take full width of their container */
-    box-sizing: border-box; /* Ensure padding and borders are included in the input width */
-    padding: 12px; /* Consistent padding */
-    margin: 10px 0; /* Consistent margin */
-    border: 1px solid #FCA311; /* Dark blue border */
-    border-radius: 4px; /* Rounded corners */
-  }
-  
-  form {
-    width: 100%;
-    max-width: 100%; /* Ensure the form doesn't exceed the width of the container */
-    box-sizing: border-box; /* Include padding and border in the element's total width */
-  }
+
   
   .titleHolder, .titleHolder h1 {
     padding-top: 0; /* Remove top padding */
   }
+}
+
+
+
+/* Ensure the back button is aligned to the left and title is centered */
+.title-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Allows the back button to be positioned without disrupting the centering */
+}
+
+.back-button {
+  position: absolute;
+  left: 0; /* Aligns the back button to the left */
+  cursor: pointer;
+}
+
+.centered-title {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 24px;
 }

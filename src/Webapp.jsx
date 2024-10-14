@@ -4,6 +4,28 @@ function WebApp() {
     const [installPromptVisible, setInstallPromptVisible] = useState(false);
     const [deferredPrompt, setDeferredPrompt] = useState(null);
 
+    // useEffect(()=>{
+    //     if ('serviceWorker' in navigator) {
+    //         navigator.serviceWorker.register('/gameplan/service-worker.js').then(registration => {
+    //           registration.onupdatefound = () => {
+    //             const installingWorker = registration.installing;
+    //             installingWorker.onstatechange = () => {
+    //               if (installingWorker.state === 'installed') {
+    //                 // The updated content is available; reload the app
+    //                 if (navigator.serviceWorker.controller) {
+    //                   // Show a message to the user or automatically reload
+    //                   window.location.reload(); // Reload to fetch the latest content
+    //                 }
+    //               }
+    //             };
+    //           };
+    //         }).catch(error => {
+    //           console.error('Error during service worker registration:', error);
+    //         });
+    //       }
+          
+    // },[navigator])
+
     useEffect(() => {
         const handleBeforeInstallPrompt = e => {
             e.preventDefault(); // Prevent the default install prompt
