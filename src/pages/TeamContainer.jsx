@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import { PAGE_ROUTE } from '../App';
-import './TeamContainer.css';
+import '../styles/TeamContainer.css';
+import '../styles/Card.css';
 import { IoMdArrowRoundBack } from 'react-icons/io';
+import { PAGE_ROUTE } from '../enums/routes.enum';
 
 function TeamContainer(props) {
   const { setTotalParticipants, setPageName, totalParticipants } = props;
@@ -24,8 +25,8 @@ function TeamContainer(props) {
       <div className="container main-content teamContainer">
         <div className="titleHolder">
           <div className="title-flex">
-            <div className="back-button" onClick={() => setPageName(PAGE_ROUTE.PREVIOUS_PAGE)}>
-              <IoMdArrowRoundBack size={25} color="#FCA311" />
+            <div className="back-button" onClick={() => setPageName(PAGE_ROUTE.LANDING_PAGE)}>
+              <IoMdArrowRoundBack size={25} color="#14213D" />
             </div>
             <h1 className="centered-title">Team Setup</h1>
           </div>
@@ -36,7 +37,7 @@ function TeamContainer(props) {
           {commonParticipantCounts.map(count => (
             <div
               key={count}
-              className={`card ${totalParticipants == count ? 'selected' : ''}`}
+              className={`card card-sm ${totalParticipants == count ? 'selected' : ''}`}
               onClick={() => {
                 setTotalParticipants(count);
               }}
@@ -70,7 +71,7 @@ function TeamContainer(props) {
       </div>
 
       <button className="action-btn" type="submit" onClick={goToNextPage} disabled={totalParticipants < 2 || totalParticipants > 20}>
-        Create Teams
+        Next
       </button>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { PAGE_ROUTE } from '../App';
 import { usePlayers } from '../context/PlayersContext';
 import { IoMdArrowRoundBack } from 'react-icons/io';
+import { PAGE_ROUTE } from '../enums/routes.enum';
 
 function PlayerListPage(props) {
   const { setPageName, totalParticipants } = props;
@@ -34,7 +34,7 @@ function PlayerListPage(props) {
     },
     [players],
   );
-  console.log('players', players);
+ 
   const goToNextPage = useCallback(() => {
     localStorage.setItem('playerList', JSON.stringify(players));
     setPageName(PAGE_ROUTE.MATCHES);
@@ -46,9 +46,9 @@ function PlayerListPage(props) {
         <div className="titleHolder">
           <div className="title-flex">
             <div className="back-button" onClick={() => setPageName(PAGE_ROUTE.LANDING_PAGE)}>
-              <IoMdArrowRoundBack size={25} color="#FCA311" />
+              <IoMdArrowRoundBack size={25} color="#14213D" />
             </div>
-            <h1 className="centered-title">Player Setup</h1>
+            <h1 className="centered-title">Name Players</h1>
           </div>
           <p>Easily organize your participants into teams.</p>
         </div>
@@ -69,7 +69,7 @@ function PlayerListPage(props) {
 
       {players.length > 0 && (
         <button className="action-btn" type="submit" onClick={e => goToNextPage()}>
-          Create Match
+          START GAME
         </button>
       )}
     </>

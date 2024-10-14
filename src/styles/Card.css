@@ -1,0 +1,111 @@
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+} 
+
+.gameSetupPage .card-container{
+    flex-wrap: nowrap;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #E5E5E5; /* Light Gray */
+  color: #14213D; /* Dark Blue for text */
+}
+
+.card-sm {
+  width: 100px;
+  height: 100px;
+}
+.card-bg {
+  width: 120px;
+  height: 120px;
+  padding: 20px;
+}
+
+.card:hover,.card.selected:hover { 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.card.selected {
+  /* background-color: #14213d; */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+
+  
+
+  background: #14213d;
+  color: white;
+  transform: translateY(-2px); /* Slight lift on selection */
+}
+.card.hidden {
+  visibility: hidden;
+}
+
+.card-rect{
+    width: 200px;
+    height: 70px;
+}
+
+
+
+/* Style for section title */
+.section-title {
+    font-size: 1.2em; /* Larger font size for better emphasis */
+    font-weight: bold; /* Make the title bold */
+    text-align: center; /* Center-align the title */
+    color: #000000; /* Use a rich, standout color (adjust as needed) */
+    text-transform: uppercase; /* Make the text all uppercase */
+    letter-spacing: 2px; /* Add letter spacing for a clean look */
+    margin-bottom: 20px; /* Space between the title and the next section */
+    position: relative; /* Position for adding decorative lines */
+    padding-bottom: 10px; /* Space under the title for decoration */
+  }
+  
+  /* Decorative underline effect for section-title */
+  .section-title:after {
+    content: "";
+    display: block;
+    width: 60px; /* Width of the line */
+    height: 3px; /* Height of the line */
+    background-color: #f57c00; /* Match the color with the overall theme */
+    margin: 10px auto 0 auto; /* Center the line and add margin */
+    transition: width 0.3s ease; /* Smooth hover transition */
+  }
+  
+  /* Hover effect for the underline */
+  .section-title:hover:after {
+    width: 80px; /* Expand the line width on hover */
+  }
+  
+  /* Optional slight animation effect */
+  .section-title {
+    animation: fadeIn 0.5s ease-out; /* Smooth fade-in animation */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+
+
+  

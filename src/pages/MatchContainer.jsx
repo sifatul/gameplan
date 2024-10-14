@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useMatch } from '../context/MatchContext';
 import { usePlayers } from '../context/PlayersContext';
-import './MatchContainer.css';
-import MatchListPage from './MatchList';
-import ActivePlayerListPage from './activePlayerList';
+import '../styles/MatchContainer.css';
+import MatchListPage from '../MatchContainer/MatchList';
+import ActivePlayerListPage from '../MatchContainer/activePlayerList';
 
 const MatchContainer = props => {
   const { resetGame } = props;
@@ -12,7 +12,6 @@ const MatchContainer = props => {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
   const { matches, setMatchList, changeMatchStatus } = useMatch();
 
- 
   useEffect(() => {
     if (!players.length) {
       const storedFixture = JSON.parse(localStorage.getItem('matches'));
@@ -20,16 +19,12 @@ const MatchContainer = props => {
       setMatchList(storedFixture);
       return;
     }
-     
   }, [players.length]);
 
-
- 
-  useEffect(()=>{
-
-    const handleBackButton = (event) => {
+  useEffect(() => {
+    const handleBackButton = event => {
       // Perform state change when back button is pressed
-      setActiveTabIdx(0)
+      setActiveTabIdx(0);
       event.preventDefault(); // Prevent default behavior if needed
     };
 
@@ -38,9 +33,7 @@ const MatchContainer = props => {
     return () => {
       window.removeEventListener('popstate', handleBackButton);
     };
-
-  
-  },[])
+  }, []);
 
   const saveMatchInfo = () => {
     // Convert array to JSON string and save it to localStorage
@@ -63,18 +56,16 @@ const MatchContainer = props => {
           </div>
         </div>
 
-        
         {activeTabIdx === 0 && <MatchListPage rounds={rounds} setRounds={setRounds} />}
         {activeTabIdx === 1 && <ActivePlayerListPage />}
-        
       </div>
-      {players.length > 0 && activeTabIdx === 0 && (
+      {/* {players.length > 0 && activeTabIdx === 0 && (
         <>
           <button className="action-btn" type="submit" onClick={e => saveMatchInfo()}>
             Save
           </button>
         </>
-      )}
+      )} */}
     </>
   );
 };

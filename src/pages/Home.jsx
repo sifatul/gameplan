@@ -1,17 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import './App.css';
-import MatchContainer from './MatchContainer/MatchContainer';
-import TeamContainer from './Team/TeamContainer';
-import PlayerListPage from './Team/PlayerSetup';
-import { PlayerProvider } from './context/PlayersContext'; // Import the TodoProvider
-import { MatchProvider } from './context/MatchContext';
-export const PAGE_ROUTE = {
-  LANDING_PAGE: 'LANDING_PAGE',
-  MATCHES: 'MATCHES',
-  PLAYER_LIST: 'PLAYER_LIST',
-};
+import '../App.css';
+import MatchContainer from './MatchContainer';
+import TeamContainer from './TeamContainer';
+import PlayerListPage from './PlayerSetup';
+import { PlayerProvider } from '../context/PlayersContext'; // Import the TodoProvider
+import { MatchProvider } from '../context/MatchContext';
+import { PAGE_ROUTE } from '../enums/routes.enum';
+// import GameSelectionPage from './SelectGameType';
+import LandingPage from './LandingPage';
 
-function App() {
+function Home() {
   const [pageName, setPageName] = useState(PAGE_ROUTE.LANDING_PAGE);
   const [totalParticipants, setTotalParticipants] = useState(4);
 
@@ -32,6 +30,9 @@ function App() {
   return (
     <div className="App">
       {pageName === PAGE_ROUTE.LANDING_PAGE && (
+        <LandingPage  setPageName={setPageName}/>
+      )}
+      {pageName === PAGE_ROUTE.PLAYER_SETUP_PAGE && (
         <TeamContainer
           setTotalParticipants={setTotalParticipants}
           totalParticipants={totalParticipants}
@@ -42,6 +43,11 @@ function App() {
         {pageName === PAGE_ROUTE.PLAYER_LIST && (
           <PlayerListPage setPageName={setPageName} totalParticipants={totalParticipants}></PlayerListPage>
         )}
+        {/* {pageName === PAGE_ROUTE.GAME_TYPE_SELECTION_PAGE && (
+          <MatchProvider>
+            <GameSelectionPage setPageName={setPageName}></GameSelectionPage>
+          </MatchProvider>
+        )} */}
         {pageName === PAGE_ROUTE.MATCHES && (
           <MatchProvider>
             <MatchContainer resetGame={resetGame}></MatchContainer>
@@ -52,4 +58,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
