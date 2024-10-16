@@ -3,12 +3,12 @@
   "name": "Game Plan App",
   "icons": [
     {
-      "src": "vite.webp",
+      "src": "new-logo-1024-1024.jpg",
       "sizes": "100x100",
-      "type": "image/webp"
+      "type": "image/jpeg"
     },
     {
-      "src": "favicon-64x64.jpeg",
+      "src": "new-logo-64-64.jpg",
       "sizes": "64x64",
       "type": "image/jpeg",
       "purpose": "any"
