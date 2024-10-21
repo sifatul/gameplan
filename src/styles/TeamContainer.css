@@ -10,6 +10,7 @@
 .manual-input-container label {
   font-weight: bold;
   margin-bottom: 5px;
+  font-size: 1.2em;
 }
 
 .manual-input-container input {
@@ -30,12 +31,12 @@
 /* Error message styling */
 .error-message {
   color: #D32F2F;
-  font-size: 0.9em;
+  font-size: 1em;
   margin-top: 5px;
 }
 
 .or-divider{
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
-  padding: 20px;
+  padding: 15px;
 }

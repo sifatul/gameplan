@@ -15,26 +15,23 @@
   box-sizing: border-box; /* Ensure padding is included in total width */
 }
 
-.main-content input {
-  margin: 5px 0; /* Increased margin for better spacing */
- 
-}
-
- 
-
 .action-btn {
-  height: 50px;
   background-color: #f57c00; /* Dark blue for action buttons */
-  color: #FFFFFF; /* White text */
+  color: #ffffff; /* White text */
   border: none; /* No border */
   cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.25s, transform 0.1s; /* Smooth transition for background color and scale */
+  transition:
+    background-color 0.25s,
+    transform 0.1s; /* Smooth transition for background color and scale */
   border-radius: 4px 4px 0px 0; /* Rounded corners for buttons */
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: 12px;
 }
 
 .action-btn:hover {
-  background-color: #FFFFFF; /* Change background on hover */
-  color: #FCA311; /* Change text color on hover */
+  background-color: #ffffff; /* Change background on hover */
+  color: #fca311; /* Change text color on hover */
   transform: scale(1.05); /* Slightly scale up on hover for a better visual cue */
 }
 
@@ -50,7 +47,7 @@
 }
 
 .team h3 {
-  color: #14213D; /* Dark blue for team headings */
+  color: #14213d; /* Dark blue for team headings */
   font-weight: bold; /* Bold team headings */
 }
 
@@ -70,45 +67,24 @@
   margin: 5px; /* Added margin for spacing between inputs */
   padding: 8px; /* Added padding for comfort */
   border-radius: 4px; /* Rounded corners */
-  border: 1px solid #E5E5E5; /* Light gray border for scores */
+  border: 1px solid #e5e5e5; /* Light gray border for scores */
 }
 
 .titleHolder {
-  padding: 20px 0 0 0; /* Increased padding for better spacing */
-  min-height: 120px;
+  padding: 10px 0 0 0; /* Increased padding for better spacing */
+  /* min-height: 120px; */
   text-align: center; /* Center align title holder content */
 }
 
 .titleHolder h1 {
   margin: 0; /* Remove bottom margin */
   color: #000000; /* Black for main title */
-  font-size: 2em; /* Increased font size for emphasis */
+  font-size: 2.5em; /* Increased font size for emphasis */
 }
 
 .titleHolder p {
   margin-top: 10px; /* Added margin to separate from title */
 }
-
-/* Add responsiveness */
-@media (max-width: 350px) {
-  .PlayerList {
-    flex: unset;
-    width: 100%;
-    height: auto; /* Allow height to be auto for smaller screens */
-    padding: 15px; /* Adjusted padding for smaller screens */
-    border-left: none; /* Remove left border */
-    margin-top: 20px; /* Space from top */
-    box-sizing: border-box; /* Include padding in width */
-    box-shadow: none; /* Remove shadow for smaller screens */
-  }
-
-  
-  .titleHolder, .titleHolder h1 {
-    padding-top: 0; /* Remove top padding */
-  }
-}
-
-
 
 /* Ensure the back button is aligned to the left and title is centered */
 .title-flex {
@@ -128,5 +104,8 @@
   flex-grow: 1;
   text-align: center;
   margin: 0;
-  font-size: 24px;
+}
+
+/* Medium devices (tablets, 768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
 }

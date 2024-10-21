@@ -6,16 +6,14 @@
    White: #FFFFFF 
 */
 
- 
-
 :root {
   /* General Styles */
   --color-black: #000000;
-  --color-dark-blue: #14213D;
-  --color-orange: #FCA311;
-  --color-light-gray: #E5E5E5;
-  --color-white: #FFFFFF;
-  
+  --color-dark-blue: #14213d;
+  --color-orange: #fca311;
+  --color-light-gray: #e5e5e5;
+  --color-white: #ffffff;
+
   /* Font Styles */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -29,7 +27,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   display: flex;
@@ -39,10 +38,12 @@ html, body {
   min-height: 100vh;
   background-color: var(--color-white);
   color: var(--color-black);
+  max-width: 1024px;
+  font-size: 12px;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.5em;
   line-height: 1.1;
   color: var(--color-dark-blue);
 }
@@ -63,7 +64,7 @@ ul {
 }
 button {
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 2em;
   font-weight: 500;
   font-family: inherit;
   background-color: var(--color-white);
@@ -78,8 +79,9 @@ button:hover {
   border-color: var(--color-orange);
 }
 
-button:focus, button:focus-visible {
-  outline: 2px solid #FCA311;
+button:focus,
+button:focus-visible {
+  outline: 2px solid #fca311;
 }
 
 button.secondary {
@@ -93,15 +95,15 @@ button.secondary:hover {
 }
 
 input {
-  padding: 10px;
+  padding: 8px;
   width: 100%;
-  background-color: #F7F7F7; /* Light gray background for inputs */
+  background-color: #f7f7f7; /* Light gray background for inputs */
   color: #000000; /* Black text for contrast */
-  border: 1px solid #E5E5E5; /* Light gray border */
+  border: 1px solid #e5e5e5; /* Light gray border */
   border-radius: 4px; /* Rounded corners */
   outline: none; /* Remove default focus outline */
   box-sizing: border-box;
-  font-size: 1em;
+  font-size: 2em;
 }
 input:focus-visible {
   border: 2px solid var(--color-orange);
@@ -111,24 +113,29 @@ input:focus-visible {
   padding: 15px;
 }
 
- 
-
-
+/* 
 /* Add responsiveness */
-@media (max-width: 350px) {
-  input {
-    font-size: 1em;
-    width: 100%; 
-    box-sizing: border-box; 
-    padding: 12px; /* Consistent padding */
-    margin: 10px 0; /* Consistent margin */
-    border: 1px solid #FCA311; /* Dark blue border */
-    border-radius: 4px; /* Rounded corners */
-  }
-  
-  form {
-    width: 100%;
-    max-width: 100%; /* Ensure the form doesn't exceed the width of the container */
-    box-sizing: border-box; /* Include padding and border in the element's total width */
-  }
+
+/* Small devices (phones in landscape, 481px - 767px) */
+
+input {
+  font-size: 1.5em;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px; /* Consistent padding */
+  margin: 0; /* Consistent margin */
+  border: 1px solid #fca311; /* Dark blue border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+form {
+  width: 100%;
+  max-width: 100%; /* Ensure the form doesn't exceed the width of the container */
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+/* Medium devices (tablets, 768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+
 }

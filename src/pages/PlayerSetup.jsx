@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { usePlayers } from '../context/PlayersContext';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { PAGE_ROUTE } from '../enums/routes.enum';
+import '../styles/PlayerSetup.css';
 
 function PlayerListPage(props) {
   const { setPageName, totalParticipants } = props;
@@ -34,7 +35,7 @@ function PlayerListPage(props) {
     },
     [players],
   );
- 
+
   const goToNextPage = useCallback(() => {
     localStorage.setItem('playerList', JSON.stringify(players));
     setPageName(PAGE_ROUTE.MATCHES);

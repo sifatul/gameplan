@@ -4,7 +4,7 @@ import { GAME_TYPE, MATCH_TYPE } from '../enums/match-defaults.enum';
 // Create a context
 const MatchContext = createContext();
 const DEFAULT_MATCH_SETUP = {
-  gameType: GAME_TYPE.SINGLES,
+  gameType: GAME_TYPE.DOUBLES,
   matchType: MATCH_TYPE.FRIENDLY,
 };
 

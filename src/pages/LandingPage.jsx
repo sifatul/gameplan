@@ -26,7 +26,7 @@ function LandingPage(props) {
           <div className="title-flex">
             <h1 className="centered-title">Game Setup</h1>
           </div>
-          <p>Select the type of game and match type.</p>
+          <p>Select the type of game and match.</p>
         </div>
 
         {/* Section 1: Game Type */}

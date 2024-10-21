@@ -13,7 +13,7 @@ function TeamContainer(props) {
     }
   }, [setPageName, totalParticipants]);
 
-  const commonParticipantCounts = [2, 4, 6, 8, 12];
+  const commonParticipantCounts = [2, 4, 6, 8, 12, 20];
 
   const handleManualInput = e => {
     const value = parseInt(e.target.value, 10);
@@ -45,7 +45,6 @@ function TeamContainer(props) {
               {count} Players
             </div>
           ))}
-          <div className={`card card-sm hidden`}>Hidden</div>
         </div>
         <div className="flex-row align-center">
           <span className="or-divider">OR</span>

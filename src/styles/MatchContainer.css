@@ -48,7 +48,7 @@
 }
 
 .team-name{
-  width: 90%;          /* Set a fixed width or max-width */
+  width: 100px;
   white-space: nowrap;   /* Prevent text from wrapping */
   overflow: hidden;      /* Hide overflow text */
   text-overflow: ellipsis; /* Show ellipsis (...) */
@@ -72,7 +72,7 @@
 .bold-text{
   font-weight: bolder;
   color: #14213D;
-  font-size: larger;
+  /* font-size: larger; */
 }
 
 .icon-inactive {
