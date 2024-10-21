@@ -16,7 +16,7 @@
 }
 
 .action-btn {
-  background-color: #f57c00; /* Dark blue for action buttons */
+  background-color: #3F51B5; /* Dark blue for action buttons */
   color: #ffffff; /* White text */
   border: none; /* No border */
   cursor: pointer; /* Pointer cursor on hover */
@@ -31,7 +31,7 @@
 
 .action-btn:hover {
   background-color: #ffffff; /* Change background on hover */
-  color: #fca311; /* Change text color on hover */
+  color: #FF5722; /* Change text color on hover */
   transform: scale(1.05); /* Slightly scale up on hover for a better visual cue */
 }
 
@@ -44,11 +44,6 @@
   overflow-y: auto; /* Enable scrolling if content exceeds height */
   color: #000000; /* Black text */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-.team h3 {
-  color: #14213d; /* Dark blue for team headings */
-  font-weight: bold; /* Bold team headings */
 }
 
 .match h3 {
@@ -104,6 +99,12 @@
   flex-grow: 1;
   text-align: center;
   margin: 0;
+}
+.flex-row{
+  display: flex;
+}
+.align-center{
+  justify-content: center;
 }
 
 /* Medium devices (tablets, 768px - 1024px) */

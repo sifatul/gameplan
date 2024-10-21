@@ -54,7 +54,7 @@ function PlayerListPage(props) {
           <p>Easily organize your participants into teams.</p>
         </div>
 
-        <ul className="long-list">
+        <ul>
           {players.map((player, idx) => {
             return (
               <input

@@ -1,82 +1,104 @@
 .custom-tabs {
   display: flex;
-  border-bottom: 2px solid #E5E5E5; /* Light gray border for the tab container */
+  border-bottom: 2px solid #e5e5e5; /* Light gray border for the tab container */
 }
 
 .custom-tabs-item {
   flex: 1;
-  border: 1px solid #E5E5E5; /* Lighter gray border for each tab */
+  border: 1px solid #e5e5e5; /* Lighter gray border for each tab */
   text-align: center;
   padding: 12px 20px; /* Increased padding for better touch targets */
   cursor: pointer;
-  background-color: #FAFAFA; /* Soft light grey background for tabs */
-  transition: background-color 0.2s, border 0.2s, color 0.2s; /* Added color transition */
+  background-color: #F5F5F5; /* Soft light grey background for tabs */
+  transition:
+    background-color 0.2s,
+    border 0.2s,
+    color 0.2s; /* Added color transition */
   border-radius: 5px 5px 0 0; /* Rounded top corners for tabs */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .custom-tabs-item:hover {
-  background-color: #FCA311; /* Orange on hover */
-  color: #FFFFFF; /* Change text color on hover */
+  background-color: #FF5722; /* Orange on hover */
+  color: #ffffff; /* Change text color on hover */
 }
 
 .custom-tabs-item.active {
-  background-color: #14213D; /* White background for active tab */
-  border-bottom: 2px solid #FCA311; /* Orange underline for active tab */
+  background-color: #FF5722; /* White background for active tab */
+  border-bottom: 2px solid #E64A19; /* Orange underline for active tab */
   font-weight: bold; /* Bold text for active tab */
-  color: #FFFFFF; /* Dark blue text for active tab */
+  color: #ffffff; /* Dark blue text for active tab */
 }
 
-.match-team {
-  align-items: center;
-  margin: 10px 0;
-  justify-content: space-between;
+.match-card {
   display: flex;
-  padding: 12px; /* Increased padding for better spacing */
-  border-radius: 4px; /* Increased border-radius for a smoother look */
-  transition: background-color 0.3s; /* Smoother background transition */
-  border: 1px solid transparent; /* Add a transparent border for consistent sizing */
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid #E0E0E0;
 }
 
-.match-team.active {
-  background-color: #F7F7F7; /* Softer light grey for active matches */
-  border: 1px solid #E5E5E5;
+.match-card:hover {
+  transform: scale(1.02);
 }
 
-.match-team:not(.active) {
-  background-color: #FFFFFF; /* White for inactive matches */
+.match-card:not(.active) {
+  background: #F0F0F0;
+    box-shadow: none; /* Remove shadow for a flat appearance */
+    opacity: 0.6; /* Dim card slightly */
+    transform: none; /* No hover lift */
+    pointer-events: none; /* Prevent any interaction */
 }
 
-.team-name{
-  width: 100px;
-  white-space: nowrap;   /* Prevent text from wrapping */
-  overflow: hidden;      /* Hide overflow text */
-  text-overflow: ellipsis; /* Show ellipsis (...) */
-}
-.name-area{
+
+.match-card .action-btn {
   width: 100%;
+  font-size: 1em;
+  border-radius: 0 0 5px 5px;
 }
 
-.match-team:not(.active) .team-name, 
-.match-team:not(.active) .player-name, 
-.match-team:not(.active) .bold-text,
-.match-team:not(.active) .status-icon{
-  color: #999; /* Dim color for inactive players */
+.match-card .action-btn:disabled{
+  background-color: #B0BEC5; /* Light gray background for disabled button */
+  color: #ffffff; /* Keep white text */
+  cursor: not-allowed; /* Change cursor to not-allowed */
+  opacity: 0.6; /* Reduce opacity for a disabled effect */
+  transform: none; /* No scale transformation */
+  transition: none; /* Remove transition effects */
 }
+.match-card .match-card-wrapper {
+  padding: 20px;
 
-.flex-row {
+  width: 100%;
+
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.bold-text{
-  font-weight: bolder;
-  color: #14213D;
-  /* font-size: larger; */
+/* Team section */
+.team {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
 }
 
-.icon-inactive {
-  color: #999; /* Dim color for inactive icons */
+.team h3 {
+  color: #14213d; /* Dark blue for team headings */
+  font-weight: bold; /* Bold team headings */
+}
+
+.team-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #009688; /* Team icon color */
 }
 
 .long-list {
@@ -86,34 +108,73 @@
   list-style-type: none; /* Remove default list styling */
 }
 
-.status-icon {
-  cursor: pointer; /* Show pointer on hover */
-  color: #14213D; /* Orange color for active status */
-  transition: transform 0.2s, color 0.2s; /* Smooth zoom and color transition on hover */
+.vs-divider::before,
+.vs-divider::after {
+  content: '';
+  width: 40%;
+  height: 2px;
+  background-color: #14213d;
+  position: relative;
+  margin: 0 10px;
 }
 
-.status-icon:hover {
-  transform: scale(1.2); /* Zoom effect on hover */
-  color: #1A315F; /* Dark blue on hover */
-}
-.w-35{
-  width: 35%;
-}
-.w-10{
-  width: 10%;
-}
-
-.w-15{
-  width: 15%;
-}
- 
-.align-left{
-  justify-content: left;
-}
-
-.align-right{
-  justify-content: right;
-}
-.align-center{
+/* Action button wrapper */
+.action-btn-wrapper {
+  display: flex;
   justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.match-list-container {
+  margin-top: 20px;
+}
+
+.match-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.team-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* VS divider */
+.vs-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #14213d;
+  margin: 10px 0;
+}
+
+
+.match-team {
+  align-items: center;
+  margin: 10px 0;
+  justify-content: space-between;
+  display: flex;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color .3s;
+  background-color: #f7f7f7;
+  border: 1px solid #E5E5E5;
+}
+
+.match-team:not(.active){
+  background: linear-gradient(145deg, #e5e5e5, #f5f5f5);
+  box-shadow: none;
+  opacity: 0.6;
+  transform: none;
+  pointer-events: none;
+}
+.match-team .flex-row{
+  align-items: center;
 }

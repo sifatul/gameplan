@@ -79,7 +79,7 @@ function WebApp() {
                         aria-label="Install App"
                         style={{
                             padding: '10px 20px',
-                            background: '#FCA311', // Orange
+                            background: '#FF5722', // Orange
                             color: '#333',
                             border: 'none',
                             borderRadius: '5px',
@@ -88,7 +88,7 @@ function WebApp() {
                             transition: 'background 0.3s', // Smooth hover transition
                         }}
                         onMouseOver={e => (e.currentTarget.style.background = '#E69508')}
-                        onMouseOut={e => (e.currentTarget.style.background = '#FCA311')}
+                        onMouseOut={e => (e.currentTarget.style.background = '#FF5722')}
                     >
                         Install
                     </button>

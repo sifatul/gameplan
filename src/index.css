@@ -1,16 +1,8 @@
-/* Color Palette
-   Black: #000000
-   Dark Blue: #14213D
-   Orange: #FCA311
-   Light Gray: #E5E5E5
-   White: #FFFFFF 
-*/
-
 :root {
   /* General Styles */
   --color-black: #000000;
   --color-dark-blue: #14213d;
-  --color-orange: #fca311;
+  --color-orange: #FF5722;
   --color-light-gray: #e5e5e5;
   --color-white: #ffffff;
 
@@ -81,7 +73,7 @@ button:hover {
 
 button:focus,
 button:focus-visible {
-  outline: 2px solid #fca311;
+  outline: 2px solid #FF5722;
 }
 
 button.secondary {
@@ -97,9 +89,9 @@ button.secondary:hover {
 input {
   padding: 8px;
   width: 100%;
-  background-color: #f7f7f7; /* Light gray background for inputs */
+  background-color: #FFFFFF; /* Light gray background for inputs */
   color: #000000; /* Black text for contrast */
-  border: 1px solid #e5e5e5; /* Light gray border */
+  border: 1px solid #FF5722; /* Light gray border */
   border-radius: 4px; /* Rounded corners */
   outline: none; /* Remove default focus outline */
   box-sizing: border-box;
@@ -124,7 +116,7 @@ input {
   box-sizing: border-box;
   padding: 10px; /* Consistent padding */
   margin: 0; /* Consistent margin */
-  border: 1px solid #fca311; /* Dark blue border */
+  border: 1px solid #FF5722; /* Dark blue border */
   border-radius: 4px; /* Rounded corners */
 }
 

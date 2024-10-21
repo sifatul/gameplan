@@ -24,7 +24,7 @@
 
 .manual-input-container input:focus {
   outline: none;
-  border-color: #fca311;
+  border-color: #FF5722;
   box-shadow: 0 0 5px rgba(252, 163, 17, 0.5);
 }
 

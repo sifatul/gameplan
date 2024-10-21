@@ -17,8 +17,9 @@
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  background-color: #E5E5E5; /* Light Gray */
+  background-color: #E0E0E0; /* Light Gray */
   color: #14213D; /* Dark Blue for text */
+  border: 1px solid #E0E0E0;
 }
 
 .teamContainer .card-sm:nth-child(5), .teamContainer .card-sm:nth-child(6){
@@ -30,7 +31,7 @@
 }
 
 .card-sm {
-  width: 47%;
+  width: 46%;
   height: 100px;
 }
 .card-bg {
@@ -50,8 +51,8 @@
   transform: scale(1.02);
   font-weight: bold;
 
-  background: #14213d;
-  color: white;
+  background: #FFFFFF;
+  color: #263238;
   transform: translateY(-2px); /* Slight lift on selection */
 }
 .card.hidden {
