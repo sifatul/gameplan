@@ -33,8 +33,8 @@ function ActivePlayerListPage() {
                 <span className='player-name'>{player.name}</span>
               </div>
 
-              {isActive && activePlayers.length > 4 && <TbBed className="status-icon" color="#009688" size={28} onClick={() => handlePlayerStatusChange(index, false)} />}
-              {!isActive && <TbBedOff className="status-icon" color="#B0BEC5" size={28} onClick={() => handlePlayerStatusChange(index, true)} />}
+              {isActive && activePlayers.length > 4 && <TbBed className="icon status-icon" color="#009688" size={28} onClick={() => handlePlayerStatusChange(index, false)} />}
+              {!isActive && <TbBedOff className="icon status-icon" color="#B0BEC5" size={28} onClick={() => handlePlayerStatusChange(index, true)} />}
             </div>
           );
         })}

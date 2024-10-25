@@ -17,9 +17,9 @@
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  background-color: #E0E0E0; /* Light Gray */
+  background-color: var(--color-bg-secondary-muted); /* Light Gray */
   color: #14213D; /* Dark Blue for text */
-  border: 1px solid #E0E0E0;
+  border: 1px solid var(--color-bg-secondary-muted);
 }
 
 .teamContainer .card-sm:nth-child(5), .teamContainer .card-sm:nth-child(6){
@@ -46,13 +46,12 @@
 
 .card.selected {
   /* background-color: #14213d; */
-  color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: scale(1.02);
   font-weight: bold;
 
   background: #FFFFFF;
-  color: #263238;
+  color: var(--color-font-primary);
   transform: translateY(-2px); /* Slight lift on selection */
 }
 .card.hidden {
@@ -72,7 +71,7 @@
     font-size: 1.2em; /* Larger font size for better emphasis */
     font-weight: bold; /* Make the title bold */
     text-align: center; /* Center-align the title */
-    color: #000000; /* Use a rich, standout color (adjust as needed) */
+    color: var(--color-font-primary);
     text-transform: uppercase; /* Make the text all uppercase */
     letter-spacing: 2px; /* Add letter spacing for a clean look */
     position: relative; /* Position for adding decorative lines */
@@ -85,7 +84,7 @@
     display: block;
     width: 60px; /* Width of the line */
     height: 3px; /* Height of the line */
-    background-color: #f57c00; /* Match the color with the overall theme */
+    background-color: var(--color-bg-secondary);
     margin: 10px auto 0 auto; /* Center the line and add margin */
     transition: width 0.3s ease; /* Smooth hover transition */
   }

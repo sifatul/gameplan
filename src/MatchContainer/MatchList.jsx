@@ -28,30 +28,28 @@ function MatchListPage(props) {
           const { isActive, team1, team2 } = round;
           return (
             <li key={`round-${roundIdx}`} className={`match-card ${isActive ? 'active' : ''}`}>
-              <div className='match-card-wrapper'>
-              <div className="team team1">
-                <IoPerson className="team-icon" />
-                <div>
-                  <div className="team-name">{team1[0]}</div>
-                  <div className="team-name">{team1[1]}</div>
+              <div className="match-card-wrapper">
+                <div className="team team1">
+                  <IoPerson className="icon team-icon" />
+                  <div>
+                    <div className="team-name">{team1[0]}</div>
+                    <div className="team-name">{team1[1]}</div>
+                  </div>
+                </div>
+                <div className="vs-divider">
+                  <span>VS</span>
+                </div>
+                <div className="team team2">
+                  <IoPersonOutline className="icon team-icon" />
+                  <div>
+                    <div className="team-name">{team2[0]}</div>
+                    <div className="team-name">{team2[1]}</div>
+                  </div>
                 </div>
               </div>
-              <div className="vs-divider">
-                <span>VS</span>
-              </div>
-              <div className="team team2">
-                <IoPersonOutline className="team-icon" />
-                <div>
-                  <div className="team-name">{team2[0]}</div>
-                  <div className="team-name">{team2[1]}</div>
-                </div>
-              </div>
-              </div>
-              <button className="action-btn" 
-              disabled={!isActive}
-              onClick={() => handleGameStatusUpdate(roundIdx, false)}>
-                  End Game
-                </button>
+              <button className="action-btn" disabled={!isActive} onClick={() => handleGameStatusUpdate(roundIdx, false)}>
+                End Game
+              </button>
             </li>
           );
         })}
