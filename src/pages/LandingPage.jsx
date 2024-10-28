@@ -7,10 +7,7 @@ import { useMatch } from '../context/MatchContext';
 function LandingPage(props) {
   const { setPageName } = props;
   const { matches, matchSetupInfo, setGameType, setMatchType } = useMatch();
-  
 
-  // const [gameType, setGameType] = useState(GAME_TYPE.DOUBLES);
-  // const [matchType, setMatchType] = useState(MATCH_TYPE.FRIENDLY);
 
   const goToNextPage = useCallback(() => {
     setPageName(PAGE_ROUTE.PLAYER_SETUP_PAGE);

@@ -1,112 +1,123 @@
- 
+const players = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
-// Example usage:
-
-function generatePairs(players) {
+// Step 1: Generate all unique pairs (teams) of players
+function generateTeams(players) {
   const teams = [];
-  const waitingPairs = {};
-  const waitingPlayers = {};
-  const waitingCumPlayers = {};
   for (let i = 0; i < players.length; i++) {
     for (let j = i + 1; j < players.length; j++) {
-      teams.push([players[i].name, players[j].name]);
-      const key = `${players[i].name}-${players[j].name}`;
-      waitingPairs[key] = (waitingPairs[key] || 1) + 1;
-
-      waitingPlayers[players[i].name] = (waitingPlayers[players[i].name] || 1) + 1;
-      waitingPlayers[players[j].name] = (waitingPlayers[players[j].name] || 1) + 1;
+      teams.push([players[i], players[j]]);
     }
   }
-  return { teams, waitingPairs };
+  return teams;
 }
-function canBeScheduled(match, lastMatch) {
-  const team1 = match.team1.join('-');
-  const team2 = match.team2.join('-');
+function generateMatches(teams) {
+  const matches = [];
+  const usedTeams = new Set();
 
-  // Ensure no team overlaps with the last match
-  return ![team1, team2].some(pair => [lastMatch.team1.join('-'), lastMatch.team2.join('-')].includes(pair));
+  // Helper to check if a team is already used
+  function isTeamUsed(team1Str, team2Str) {  
+    return usedTeams.has(`${team1Str}vs${team2Str}`) || usedTeams.has(`${team2Str}vs${team1Str}`)  
+  }
+
+  // Try forming matches by combining non-overlapping teams
+  for (let i = 0; i < teams.length; i++) {
+    const currentTeam = teams[i];
+    const newRow = teams.filter(team => {
+      const containDuplicate = team.includes(currentTeam[0]) || team.includes(currentTeam[1]);
+      return !containDuplicate;
+    });
+    // console.log(newRow)
+    for (let j = 0; j < newRow.length; j++) {
+      const [team1, team2] = [teams[i], newRow[j]];
+      const team1Str = team1.join('-');
+      const team2Str = team2.join('-');
+
+      if (!isTeamUsed(team1Str, team2Str)) {
+        const playerList = [...team1Str.split('-'),...team2Str.split('-')];
+       
+        matches.push({match: `${team1Str} vs ${team2Str}`, t1count: 0, t2count:0});
+        usedTeams.add(`${team2Str} vs ${team1Str}`);
+        usedTeams.add(`${team1Str} vs ${team2Str}`);
+      
+        
+        
+      }
+    }
+  }
+
+  return matches;
+}
+
+function sortMatch(matches, playCount){
+    
+    if(matches.length <=1) return matches;
+    // if(matches.length === 1) return matches;
+    
+    matches.sort(function(a, b){
+        if(a.t1count === b.t1count){
+            return a.t2count - b.t2count
+        }
+        return a.t1count - b.t1count
+        
+    });
+    
+    const output = matches.splice(0,1);
+    const currentPlayers = output[0].match.split('vs').flatMap(item=> item.split('-')).map(item=>item.trim())
+    // console.log("currentPlayers",currentPlayers)
+    
+    currentPlayers.forEach((player)=>{
+        playCount[player.trim()] +=1;
+    
+    })
+    
+
+    
+    matches.forEach(match=>{
+        const teams = match.match.split('vs');
+        const t1= teams[0].split('-').map(item=>item.trim())
+        const t2= teams[1].split('-').map(item=>item.trim())
+         
+        
+        const totalPoint1 = t1.reduce((acc,player)=>{
+                acc += playCount[player];
+            return acc
+            }, 0)
+            
+            
+                    const totalPoint2 = t2.reduce((acc,player)=>{
+                acc += playCount[player];
+            return acc
+            }, 0)
+      
+            match.t1count =totalPoint1
+            match.t2count =totalPoint2
+            
+    })
+     
+
+    return [output[0], ...sortMatch(matches, playCount)]
 }
 
 export function scheduleMatches(activePlayers) {
-  let { teams, waitingPairs } = generatePairs(activePlayers);
-  const allNames = activePlayers.map(player => player.name);
-  let bench = [...allNames];
-  let counter = 0;
-  const output = [];
-  const memory = {};
-  while (counter < 1400) {
-    const firstFour = bench.splice(0, 4);
-    const match = {
-      team1: [firstFour[0], firstFour[1]],
-      team2: [firstFour[2], firstFour[3]],
-      isActive: true,
-    };
-    const key1 = match.team1.sort().join('');
-    const key2 = match.team2.sort().join('');
-    const key = key1 + '-' + key2;
-    if (!memory[key]) {
-      output.push(match);
-      memory[key] = match;
-      bench = [...bench, ...firstFour];
-    } else {
-      // firstFour[0],firstFour[3],firstFour[1],firstFour[2]
-      // bench = [firstFour[0],firstFour[2],firstFour[1],firstFour[3],...bench,firstFour[0],firstFour[3],firstFour[1],firstFour[2], ]
-      bench = [...bench, firstFour[0], firstFour[3], firstFour[1], firstFour[2]];
-    }
-    counter++;
-  }
- 
-  return output;
-}
+  // Generate teams and matches
+  const playerNames = activePlayers.map(player => player.name);
+  const teams = generateTeams(playerNames);
+  const matches = generateMatches(teams);
 
-function hasCommonName(key1, key2) {
-  // Split the keys into names
-  const names1 = key1.split('-');
-  const names2 = key2.split('-');
+  const playCount = playerNames.reduce((acc, player) => {
+    acc[player] = 0;
+    return acc;
+  }, {});
 
-  // Use a Set to check for common names
-  const nameSet = new Set(names1);
+  const sorted = sortMatch(matches, playCount)
 
-  // Check if any name from key2 exists in the set
-  return names2.some(name => nameSet.has(name));
-}
+  // return sorted
 
-function sortMatches(matches, temp, allNames) {
-  let bench = [...allNames];
-
-  let len = Object.keys(temp);
-  let counter = 0;
-  let output = [];
-  while (Object.keys(temp).length) {
-    if (bench.size < 4) {
-      bench = new Set([...Array.from(bench), ...allNames]); // Merge both sets or arrays
-    }
-    const benchArray = Array.from(bench); // Convert the Set to an array
-
-    const fourPlayers = benchArray.splice(0, 4);
-    bench = new Set(benchArray);
-    const key = fourPlayers.join('-');
-
-    if (!temp[key]) {
-      console.log('dsd', key);
-      bench = new Set([...bench, fourPlayers.pop()]); // Merge
-      continue;
-    }
-    const match = temp[key];
-
-    if (temp[key].length === 0) {
-      delete temp[key];
-    }
-    if (match.length) {
-      const item = match.splice(0, 1);
-      output = [...output, item[0]];
-    }
-
-    counter++;
-    len = Object.keys(temp);
-
-    if (counter > 100) {
-      break;
-    }
-  }
+  const temp = sorted.map(match => {
+    const teams = match.match.split('vs');
+    return { team1: teams[0].split('-'), team2: teams[1].split('-'), isActive: true };
+  });
+  console.log('Matches:', sorted);
+  // console.log('Player appearances:', playerUsage);
+  return temp;
 }
